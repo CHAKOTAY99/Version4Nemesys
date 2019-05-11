@@ -22,7 +22,7 @@ namespace Version4Nemesys.Controllers
         }
 
         //Test
-        public IActionResult TestCreate()
+        public IActionResult Create()
         {
             return View();
         }
@@ -30,7 +30,7 @@ namespace Version4Nemesys.Controllers
         //adding a new hazard
         public IActionResult AddHazard(HazardViewModel HazardVM)
         {
-            int id = _repository.AddHazard(HazardVM);
+            _repository.AddHazard(HazardVM);
             return RedirectToAction("Details");
         }
 

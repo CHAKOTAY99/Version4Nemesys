@@ -11,6 +11,6 @@ namespace Version4Nemesys.Repositories
     {
         IEnumerable<HazardModel> GetHazards();
         void RemoveHazard(int HazardID);
-        int AddHazard(HazardViewModel HazardVM);
+        void AddHazard(HazardViewModel HazardVM);
     }
 }

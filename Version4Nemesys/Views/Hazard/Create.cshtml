@@ -1,16 +1,16 @@
-﻿@model Version4Nemesys.Models.HazardModel
+﻿@model Version4Nemesys.Models.ViewModels.HazardViewModel
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Create Hazard";
 }
 
 <h1>Create</h1>
 
-<h4>HazardModel</h4>
+<h4>Create a Hazard</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create">
+        <form asp-action="AddHazard">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="HazardName" class="control-label"></label>
@@ -23,11 +23,6 @@
         </form>
     </div>
 </div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

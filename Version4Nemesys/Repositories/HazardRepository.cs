@@ -17,20 +17,12 @@ namespace Version4Nemesys.Repositories
             _context = context;
         }
 
-        //private readonly IHazardRepository _repository;
-
-        //public HazardRepository(IHazardRepository repository)
-        //{
-        //    _repository = repository;
-        //}
-
-        public int AddHazard(HazardViewModel HazardVM)
+        public void AddHazard(HazardViewModel HazardVM)
         {
             HazardModel newHazard = new HazardModel();
             newHazard.HazardName = HazardVM.HazardName;
             _context.Hazard.Add(newHazard);
             _context.SaveChanges();
-            return newHazard.HazardID;
         }
 
         public IEnumerable<HazardModel> GetHazards()
