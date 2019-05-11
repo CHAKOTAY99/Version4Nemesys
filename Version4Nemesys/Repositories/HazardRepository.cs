@@ -10,17 +10,23 @@ namespace Version4Nemesys.Repositories
 {
     public class HazardRepository : IHazardRepository
     {
-        private ApplicationDbContext _context { get; set; }
+        private readonly ApplicationDbContext _context;
 
-        public HazardRepository()
+        public HazardRepository(ApplicationDbContext context)
         {
-            this._context = new ApplicationDbContext();
+            _context = context;
         }
+
+        //private readonly IHazardRepository _repository;
+
+        //public HazardRepository(IHazardRepository repository)
+        //{
+        //    _repository = repository;
+        //}
 
         public int AddHazard(HazardViewModel HazardVM)
         {
             HazardModel newHazard = new HazardModel();
-            newHazard.HazardID = _context.Hazard.Count() + 1;
             newHazard.HazardName = HazardVM.HazardName;
             _context.Hazard.Add(newHazard);
             _context.SaveChanges();
