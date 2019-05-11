@@ -13,6 +13,9 @@ using Microsoft.EntityFrameworkCore;
 using Version4Nemesys.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.Identity.UI.Services;
+using Version4Nemesys.Services;
+using Version4Nemesys.Repositories;
 
 namespace Version4Nemesys
 {
@@ -50,6 +53,11 @@ namespace Version4Nemesys
             .AddRoleManager<RoleManager<IdentityRole>>()
             .AddDefaultUI(UIFramework.Bootstrap4)
             .AddEntityFrameworkStores<ApplicationDbContext>();
+
+            // Adding services to DB context
+            services.AddTransient<IEmailSender, EmailSender>();
+            services.Configure<AuthMessageSenderOptions>(Configuration);
+            services.AddScoped<IHazardRepository, HazardRepository>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }

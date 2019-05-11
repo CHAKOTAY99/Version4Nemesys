@@ -7,18 +7,34 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Version4Nemesys.Data;
 using Version4Nemesys.Models;
+using Version4Nemesys.Models.ViewModels;
+using Version4Nemesys.Repositories;
 
 namespace Version4Nemesys.Controllers
 {
     public class HazardController : Controller
     {
-        private readonly ApplicationDbContext _context;
+        private readonly IHazardRepository _repository;
 
-        public HazardController(ApplicationDbContext context)
+        public HazardController(IHazardRepository repository)
         {
-            _context = context;
+            _repository = repository;
         }
 
+        //Test
+        public IActionResult TestCreate()
+        {
+            return View();
+        }
+
+        //adding a new hazard
+        public IActionResult AddHazard(HazardViewModel HazardVM)
+        {
+            int id = _repository.AddHazard(HazardVM);
+            return RedirectToAction("Details");
+        }
+
+        /*
         // GET: Hazard
         public async Task<IActionResult> Index()
         {
@@ -42,7 +58,7 @@ namespace Version4Nemesys.Controllers
 
             return View(hazardModel);
         }
-
+        
         // GET: Hazard/Create
         public IActionResult Create()
         {
@@ -149,5 +165,6 @@ namespace Version4Nemesys.Controllers
         {
             return _context.Hazard.Any(e => e.HazardID == id);
         }
+        */
     }
 }
