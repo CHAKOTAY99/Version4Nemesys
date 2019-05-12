@@ -58,6 +58,7 @@ namespace Version4Nemesys
             services.AddTransient<IEmailSender, EmailSender>();
             services.Configure<AuthMessageSenderOptions>(Configuration);
             services.AddScoped<IHazardRepository, HazardRepository>();
+            services.AddScoped<IReportRepository, ReportRepository>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }

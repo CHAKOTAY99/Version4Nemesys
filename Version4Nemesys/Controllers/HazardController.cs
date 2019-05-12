@@ -21,19 +21,19 @@ namespace Version4Nemesys.Controllers
             _repository = repository;
         }
 
-        //Test
         public IActionResult Create()
         {
             return View();
         }
 
-        //adding a new hazard
+        // Adding a new hazard
         public IActionResult AddHazard(HazardViewModel HazardVM)
         {
             _repository.AddHazard(HazardVM);
             return RedirectToAction("Index");
         }
         
+        // List the Hazards
         public IActionResult Index()
         {
             ViewBag.Hazards = _repository.GetHazards();

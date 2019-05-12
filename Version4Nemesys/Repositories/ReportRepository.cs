@@ -27,25 +27,13 @@ namespace Version4Nemesys.Repositories
             newReport.EventLocation = ReportVM.EventLocation;
             newReport.EventDescription = ReportVM.EventDescription;
             newReport.States = Status.Estates.OPEN;
+            _context.Reports.Add(newReport);
+            _context.SaveChanges();
         }
 
         public IEnumerable<ReportModel> GetReports()
         {
-            throw new NotImplementedException();
-        }
-
-
-        public void AddHazard(HazardViewModel HazardVM)
-        {
-            HazardModel newHazard = new HazardModel();
-            newHazard.HazardName = HazardVM.HazardName;
-            _context.Hazard.Add(newHazard);
-            _context.SaveChanges();
-        }
-
-        public IEnumerable<HazardModel> GetHazards()
-        {
-            return _context.Hazard.ToList();
+            return _context.Reports.ToList();
         }
     }
 }

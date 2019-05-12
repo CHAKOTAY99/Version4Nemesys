@@ -7,18 +7,40 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Version4Nemesys.Data;
 using Version4Nemesys.Models;
+using Version4Nemesys.Models.ViewModels;
+using Version4Nemesys.Repositories;
 
 namespace Version4Nemesys.Controllers
 {
     public class ReportController : Controller
     {
-        private readonly ApplicationDbContext _context;
+        private readonly IReportRepository _repository;
 
-        public ReportController(ApplicationDbContext context)
+        public ReportController(IReportRepository repository)
         {
-            _context = context;
+            _repository = repository;
         }
 
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        // Adding a new Report
+        public IActionResult AddReport(ReportViewModel ReportVM)
+        {
+            _repository.AddReport(ReportVM);
+            return RedirectToAction("Index");
+        }
+
+        // List the Reports
+        public IActionResult Index()
+        {
+            ViewBag.Hazards = _repository.GetReports();
+            return View();
+        }
+
+        /*
         // GET: Report
         public async Task<IActionResult> Index()
         {
@@ -162,5 +184,6 @@ namespace Version4Nemesys.Controllers
         {
             return _context.Reports.Any(e => e.ReportID == id);
         }
+        */
     }
 }
