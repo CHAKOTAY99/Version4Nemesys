@@ -9,10 +9,7 @@ namespace Version4Nemesys.Models.ViewModels
     public class HazardViewModel
     {
         public HazardModel Hazard { get; set; }
-
-        [Required]
-        public int HazardID { get; set; }
-
+        
         [Required]
         public string HazardName { get; set; }
     }

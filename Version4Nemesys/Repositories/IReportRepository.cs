@@ -7,9 +7,9 @@ using Version4Nemesys.Models.ViewModels;
 
 namespace Version4Nemesys.Repositories
 {
-    public interface IHazardRepository
+    public interface IReportRepository
     {
-        IEnumerable<HazardModel> GetHazards();
-        void AddHazard(HazardViewModel HazardVM);
+        IEnumerable<ReportModel> GetReports();
+        void AddReport(ReportViewModel ReportVM);
     }
 }
