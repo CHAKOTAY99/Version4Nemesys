@@ -27,7 +27,7 @@ namespace Version4Nemesys.Repositories
 
         public IEnumerable<HazardModel> GetHazards()
         {
-            throw new NotImplementedException();
+            return _context.Hazard.ToList();
         }
 
         public void RemoveHazard(int HazardID)

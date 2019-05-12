@@ -31,7 +31,13 @@ namespace Version4Nemesys.Controllers
         public IActionResult AddHazard(HazardViewModel HazardVM)
         {
             _repository.AddHazard(HazardVM);
-            return RedirectToAction("Details");
+            return RedirectToAction("Index");
+        }
+        
+        public IActionResult Index()
+        {
+            ViewBag.Hazards = _repository.GetHazards();
+            return View();
         }
 
         /*
@@ -40,7 +46,7 @@ namespace Version4Nemesys.Controllers
         {
             return View(await _context.Hazard.ToListAsync());
         }
-
+        /*
         // GET: Hazard/Details/5
         public async Task<IActionResult> Details(int? id)
         {

@@ -1,35 +1,36 @@
-﻿@model IEnumerable<Version4Nemesys.Models.HazardModel>
+﻿@model Version4Nemesys.Models.HazardModel;
 
 @{
     ViewData["Title"] = "Index";
+    IEnumerable<HazardModel> Hazards = ViewBag.Hazards;
 }
-
 <h1>Index</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.HazardName)
+                Hazard
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.HazardName)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.HazardID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.HazardID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.HazardID">Delete</a>
-            </td>
-        </tr>
-}
+        @if (Hazards != null)
+        {
+            @foreach (var item in Hazards)
+            {
+                    <tr>
+                        <td>
+                            @item.HazardName
+                        </td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.HazardID">Edit</a> |
+                            <a asp-action="Details" asp-route-id="@item.HazardID">Details</a> |
+                            <a asp-action="Delete" asp-route-id="@item.HazardID">Delete</a>
+                        </td>
+                    </tr>
+            }
+        }
     </tbody>
 </table>
