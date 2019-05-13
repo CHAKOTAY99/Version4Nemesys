@@ -1,0 +1,46 @@
+﻿@model Version4Nemesys.Models.InvestigationModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>InvestigationModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="InvestigationID" />
+            <div class="form-group">
+                <label asp-for="ActionDate" class="control-label"></label>
+                <input asp-for="ActionDate" class="form-control" />
+                <span asp-validation-for="ActionDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InvestigationDescription" class="control-label"></label>
+                <input asp-for="InvestigationDescription" class="form-control" />
+                <span asp-validation-for="InvestigationDescription" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserID" class="control-label"></label>
+                <input asp-for="UserID" class="form-control" />
+                <span asp-validation-for="UserID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="States" class="control-label"></label>
+                <select asp-for="States" class="form-control"></select>
+                <span asp-validation-for="States" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
