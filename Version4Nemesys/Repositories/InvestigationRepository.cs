@@ -19,12 +19,17 @@ namespace Version4Nemesys.Repositories
 
         public IEnumerable<InvestigationModel> GetInvestigations()
         {
-            throw new NotImplementedException();
-            //return _context.Investigations.ToList();
+            //throw new NotImplementedException();
+            return _context.Investigations.ToList();
         }
         public void AddInvestigation(InvestigationViewModel InvestigationVM)
         {
-            throw new NotImplementedException();
+            InvestigationModel newInvestigation = new InvestigationModel();
+            newInvestigation.ActionDate = DateTime.Now;
+            //newInvestigation.ReportUsed = InvestigationVM.EventDate;
+            newInvestigation.InvestigationDescription = InvestigationVM.InvestigationDescription;
+            _context.Investigations.Add(newInvestigation);
+            _context.SaveChanges();
         }
     }
 }

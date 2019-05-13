@@ -14,6 +14,9 @@ namespace Version4Nemesys.Controllers
 {
     public class HazardController : Controller
     {
+
+        /* THIS IS TEMPORARLY RETIRED */
+
         private readonly IHazardRepository _repository;
 
         public HazardController(IHazardRepository repository)

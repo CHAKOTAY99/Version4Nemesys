@@ -10,7 +10,7 @@ using Version4Nemesys.Models;
 
 namespace Version4Nemesys.Controllers
 {
-    public class InvestigationModelsController : Controller
+    public class InvestigationController : Controller
     {
 
         /*
