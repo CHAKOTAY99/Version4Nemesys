@@ -36,7 +36,7 @@ namespace Version4Nemesys.Controllers
         // List the Reports
         public IActionResult Index()
         {
-            ViewBag.Hazards = _repository.GetReports();
+            ViewBag.Reports = _repository.GetReports();
             return View();
         }
 

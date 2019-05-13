@@ -1,9 +1,10 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
-using static Version4Nemesys.Models.Enums.Status;
+using Version4Nemesys.Models.Enums;
 
 namespace Version4Nemesys.Models.ViewModels
 {
@@ -23,6 +24,13 @@ namespace Version4Nemesys.Models.ViewModels
         [Required]
         public string EventDescription { get; set; }
         [Required]
-        public Estates States { get; set; }
+        public HazardsTest HazardsInTest { get; set; }
+        public StatesTest StatusInTest { get; set; }
+        //[Required]
+        //public Estates States { get; set; }
+        //[Required]
+        //public int HazardID { get; set; }
+        //[Required]
+        //public EnumStates StatesInTest { get; set; }
     }
 }

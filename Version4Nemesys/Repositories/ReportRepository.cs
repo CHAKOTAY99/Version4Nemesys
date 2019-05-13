@@ -26,7 +26,11 @@ namespace Version4Nemesys.Repositories
             newReport.ReportDate = DateTime.Now;
             newReport.EventLocation = ReportVM.EventLocation;
             newReport.EventDescription = ReportVM.EventDescription;
-            newReport.States = Status.Estates.OPEN;
+            //newReport.States = Status.Estates.OPEN;
+            //newReport.HazardID = ReportVM.HazardID;
+            //newReport.HazardEnum = ReportVM.HazardEnum;
+            newReport.HazardsInTest = ReportVM.HazardsInTest;
+            newReport.StatesInTest = StatesTest.Open;
             _context.Reports.Add(newReport);
             _context.SaveChanges();
         }

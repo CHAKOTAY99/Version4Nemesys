@@ -24,11 +24,6 @@
                 <span asp-validation-for="ReportDate" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="HazardID" class="control-label"></label>
-                <select asp-for="HazardID" class="form-control" asp-items="ViewBag.HazardID"></select>
-                <span asp-validation-for="HazardID" class="text-danger"></span>
-            </div>
-            <div class="form-group">
                 <label asp-for="EventLocation" class="control-label"></label>
                 <input asp-for="EventLocation" class="form-control" />
                 <span asp-validation-for="EventLocation" class="text-danger"></span>
@@ -37,16 +32,6 @@
                 <label asp-for="EventDescription" class="control-label"></label>
                 <input asp-for="EventDescription" class="form-control" />
                 <span asp-validation-for="EventDescription" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="PhotoID" class="control-label"></label>
-                <select asp-for="PhotoID" class="form-control" asp-items="ViewBag.PhotoID"></select>
-                <span asp-validation-for="PhotoID" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="States" class="control-label"></label>
-                <select asp-for="States" class="form-control"></select>
-                <span asp-validation-for="States" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />

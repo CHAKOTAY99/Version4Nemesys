@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Version4Nemesys.Data;
 
 namespace Version4Nemesys.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190513175928_changingEnum")]
+    partial class changingEnum
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -212,7 +214,7 @@ namespace Version4Nemesys.Data.Migrations
 
                     b.Property<int>("ReportUsed");
 
-                    b.Property<int>("StatesInTest");
+                    b.Property<int>("States");
 
                     b.HasKey("InvestigationID");
 
@@ -257,7 +259,11 @@ namespace Version4Nemesys.Data.Migrations
                     b.Property<string>("EventLocation")
                         .IsRequired();
 
+                    b.Property<int>("HazardID");
+
                     b.Property<int>("HazardsInTest");
+
+                    b.Property<int>("PhotoID");
 
                     b.Property<DateTime?>("ReportDate")
                         .IsRequired();
@@ -268,6 +274,10 @@ namespace Version4Nemesys.Data.Migrations
                     b.Property<int>("StatesInTest");
 
                     b.HasKey("ReportID");
+
+                    b.HasIndex("HazardID");
+
+                    b.HasIndex("PhotoID");
 
                     b.ToTable("Reports");
                 });
@@ -330,6 +340,19 @@ namespace Version4Nemesys.Data.Migrations
                     b.HasOne("Version4Nemesys.Models.ReportModel", "RelatedReport")
                         .WithMany()
                         .HasForeignKey("ReportID")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("Version4Nemesys.Models.ReportModel", b =>
+                {
+                    b.HasOne("Version4Nemesys.Models.HazardModel", "RelatedHazard")
+                        .WithMany()
+                        .HasForeignKey("HazardID")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("Version4Nemesys.Models.PhotoModel", "RelatedPhoto")
+                        .WithMany()
+                        .HasForeignKey("PhotoID")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618

@@ -12,10 +12,13 @@ namespace Version4Nemesys.Models
         [Required]
         [Key]
         public int PhotoID { get; set; }
+
         [Required]
         public string PhotoName { get; set; }
+
         [Required]
         public string PhotoPath { get; set; }
+
         [Required]
         public int ReportID { get; set; }
         [ForeignKey("ReportID")]

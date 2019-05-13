@@ -1,6 +1,6 @@
-﻿@model IEnumerable<Version4Nemesys.Models.ReportModel>
-@{
+﻿@{
     ViewData["Title"] = "Index";
+    IEnumerable<ReportModel> Reports = ViewBag.Reports;
 }
 
 <h1>Index</h1>
@@ -12,47 +12,45 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.EventDate)
+                Date of Event
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ReportDate)
+                Date of Report
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.EventLocation)
+                Location of event
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.EventDescription)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.States)
+                Description of event
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.EventDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ReportDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EventLocation)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EventDescription)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.States)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.ReportID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ReportID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ReportID">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
+        @if (Reports != null)
+        {
+            @foreach (var item in Reports)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EventDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ReportDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EventLocation)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EventDescription)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.ReportID">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.ReportID">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.ReportID">Delete</a>
+                    </td>
+                </tr>
+            }
+        }
+        </tbody>
 </table>
