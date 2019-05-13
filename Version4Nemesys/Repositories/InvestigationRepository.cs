@@ -17,15 +17,14 @@ namespace Version4Nemesys.Repositories
             _context = context;
         }
 
-        IEnumerable<InvestigationModel> GetInvestigations()
+        public IEnumerable<InvestigationModel> GetInvestigations()
         {
-            return _context.Investigations.ToList();
+            throw new NotImplementedException();
+            //return _context.Investigations.ToList();
         }
-        void AddInvestigation(InvestigationViewModel InvestigationVM)
+        public void AddInvestigation(InvestigationViewModel InvestigationVM)
         {
-            // TODO
+            throw new NotImplementedException();
         }
-
-
     }
 }

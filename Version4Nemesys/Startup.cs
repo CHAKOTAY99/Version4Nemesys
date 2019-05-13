@@ -59,7 +59,7 @@ namespace Version4Nemesys
             services.Configure<AuthMessageSenderOptions>(Configuration);
             services.AddScoped<IHazardRepository, HazardRepository>();
             services.AddScoped<IReportRepository, ReportRepository>();
-
+            services.AddScoped<IInvestigationRepository, InvestigationRepository>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 

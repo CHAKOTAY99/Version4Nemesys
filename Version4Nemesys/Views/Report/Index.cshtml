@@ -1,5 +1,4 @@
 ﻿@model IEnumerable<Version4Nemesys.Models.ReportModel>
-
 @{
     ViewData["Title"] = "Index";
 }
@@ -19,25 +18,13 @@
                 @Html.DisplayNameFor(model => model.ReportDate)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.UserID)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.EventLocation)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.EventDescription)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ReportUpvotes)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.States)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.HazardsModel)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PhotoModel)
             </th>
             <th></th>
         </tr>
@@ -52,25 +39,13 @@
                 @Html.DisplayFor(modelItem => item.ReportDate)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.UserID)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.EventLocation)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.EventDescription)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ReportUpvotes)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.States)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.HazardsModel.HazardName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PhotoModel.PhotoName)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.ReportID">Edit</a> |
