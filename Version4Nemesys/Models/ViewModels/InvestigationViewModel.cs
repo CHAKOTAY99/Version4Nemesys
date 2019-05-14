@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
-using static Version4Nemesys.Models.Enums;
+using Version4Nemesys.Models.Enums;
 
 namespace Version4Nemesys.Models.ViewModels
 {

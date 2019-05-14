@@ -1,5 +1,5 @@
 ﻿@model Version4Nemesys.Models.ViewModels.ReportViewModel
-
+@using Version4Nemesys.Models.Enums
 @{
     ViewData["Title"] = "Create";
 }
@@ -19,7 +19,9 @@
             </div>
             <div class="form-group">
                 <label asp-for="HazardsInTest" class="control-label"></label>
-                <input asp-for="HazardsInTest" class="form-control" />
+                <select asp-for="HazardsInTest" asp-items="Html.GetEnumSelectList<HazardsTest>()">
+                    <option selected="selected" value="">Please select</option>
+                </select>
                 <span asp-validation-for="HazardsInTest" class="text-danger"></span>
             </div>
             <div class="form-group">
