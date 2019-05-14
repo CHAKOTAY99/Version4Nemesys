@@ -45,9 +45,7 @@
                         @Html.DisplayFor(modelItem => item.EventDescription)
                     </td>
                     <td>
-                        <a asp-action="Edit" asp-route-id="@item.ReportID">Edit</a> |
-                        <a asp-controller="Report" asp-action="Details" asp-route-id="@item.ReportID">Details</a> |
-                        <a asp-action="Delete" asp-route-id="@item.ReportID">Delete</a>
+                        <a asp-controller="Report" asp-action="Details" asp-route-id="@item.ReportID">Details</a>
                     </td>
                 </tr>
             }

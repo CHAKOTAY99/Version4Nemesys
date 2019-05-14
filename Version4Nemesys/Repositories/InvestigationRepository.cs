@@ -22,11 +22,11 @@ namespace Version4Nemesys.Repositories
             //throw new NotImplementedException();
             return _context.Investigations.ToList();
         }
-        public void AddInvestigation(InvestigationViewModel InvestigationVM)
+        public void AddInvestigation(InvestigationViewModel InvestigationVM, int id)
         {
             InvestigationModel newInvestigation = new InvestigationModel();
             newInvestigation.ActionDate = DateTime.Now;
-            //newInvestigation.ReportUsed = InvestigationVM.EventDate;
+            newInvestigation.ReportUsed = id;
             newInvestigation.InvestigationDescription = InvestigationVM.InvestigationDescription;
             _context.Investigations.Add(newInvestigation);
             _context.SaveChanges();

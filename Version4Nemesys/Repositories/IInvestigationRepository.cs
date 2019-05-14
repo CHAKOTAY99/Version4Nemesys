@@ -10,6 +10,6 @@ namespace Version4Nemesys.Repositories
     public interface IInvestigationRepository
     {
         IEnumerable<InvestigationModel> GetInvestigations();
-        void AddInvestigation(InvestigationViewModel InvestigationVM);
+        void AddInvestigation(InvestigationViewModel InvestigationVM, int id);
     }
 }

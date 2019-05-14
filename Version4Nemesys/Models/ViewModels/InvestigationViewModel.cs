@@ -24,6 +24,5 @@ namespace Version4Nemesys.Models.ViewModels
         public StatesTest StatusInTest { get; set; }
         //[Required]
         //public Estates States { get; set; }
-
     }
 }
