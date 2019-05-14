@@ -1,4 +1,4 @@
-﻿@model Version4Nemesys.Models.ReportModel
+﻿@model Version4Nemesys.Models.ViewModels.ReportViewModel
 
 @{
     ViewData["Title"] = "Details";
@@ -11,32 +11,31 @@
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.EventDate)
+            @Html.DisplayNameFor(ReportModel => ReportModel.Report.EventDate)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.EventDate)
+            @Html.DisplayFor(ReportModel => ReportModel.Report.EventDate)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ReportDate)
+            @Html.DisplayNameFor(ReportModel => ReportModel.Report.ReportDate)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ReportDate)
+            @Html.DisplayFor(ReportModel => ReportModel.Report.ReportDate)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.EventLocation)
+            @Html.DisplayNameFor(ReportModel => ReportModel.Report.EventLocation)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.EventLocation)
+            @Html.DisplayFor(ReportModel => ReportModel.Report.EventLocation)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.EventDescription)
+            @Html.DisplayNameFor(ReportModel => ReportModel.Report.EventDescription)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.EventDescription)
+            @Html.DisplayFor(ReportModel => ReportModel.Report.EventDescription)
         </dd>
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.ReportID">Edit</a> |
     <a asp-action="Index">Back to List</a>
 </div>

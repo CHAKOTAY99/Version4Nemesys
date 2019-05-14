@@ -11,5 +11,6 @@ namespace Version4Nemesys.Repositories
     {
         IEnumerable<ReportModel> GetReports();
         void AddReport(ReportViewModel ReportVM);
+        ReportModel ShowReportDetails(int ReportID);
     }
 }

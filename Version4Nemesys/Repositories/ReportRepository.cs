@@ -39,5 +39,10 @@ namespace Version4Nemesys.Repositories
         {
             return _context.Reports.ToList();
         }
+
+        public ReportModel ShowReportDetails(int ReportID)
+        {
+            return _context.Reports.SingleOrDefault(x => x.ReportID == ReportID);
+        }
     }
 }

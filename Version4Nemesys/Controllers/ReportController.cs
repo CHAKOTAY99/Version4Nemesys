@@ -40,6 +40,18 @@ namespace Version4Nemesys.Controllers
             return View();
         }
 
+        // Give details of the Report
+        [Route("Details/{id:int}")]
+        public IActionResult Details(int id)
+        {
+            var report = _repository.ShowReportDetails(id);
+            ReportViewModel detailModel = new ReportViewModel()
+            {
+                Report = report
+            };
+            return View(detailModel);
+        }
+
         /*
         // GET: Report
         public async Task<IActionResult> Index()
