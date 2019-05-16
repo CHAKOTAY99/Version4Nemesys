@@ -1,9 +1,11 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Identity;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
+using Version4Nemesys.Data;
 using Version4Nemesys.Models.Enums;
 
 namespace Version4Nemesys.Models
@@ -40,5 +42,10 @@ namespace Version4Nemesys.Models
         [Required]
         public HazardsTest HazardsInTest { get; set; }
         // public RegisterModel RegisterModel { get; set; }
+
+        [Required]
+        public string ReporterId { get; set; }
+        [ForeignKey("ReporterId")]
+        public IdentityUser RelatedUser { get; set; }
     }
 }

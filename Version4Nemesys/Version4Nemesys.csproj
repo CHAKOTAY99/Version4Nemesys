@@ -6,6 +6,21 @@
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="Data\Migrations\20190516102138_changeForignKeyofUser.cs" />
+    <Compile Remove="Data\Migrations\20190516102138_changeForignKeyofUser.Designer.cs" />
+    <Compile Remove="Data\Migrations\20190516103529_AmendIdentity.cs" />
+    <Compile Remove="Data\Migrations\20190516103529_AmendIdentity.Designer.cs" />
+    <Compile Remove="Data\Migrations\20190516105228_AmendIdentity.cs" />
+    <Compile Remove="Data\Migrations\20190516105228_AmendIdentity.Designer.cs" />
+    <Compile Remove="Data\Migrations\20190516110453_AmendIdentity.cs" />
+    <Compile Remove="Data\Migrations\20190516110453_AmendIdentity.Designer.cs" />
+    <Compile Remove="Data\Migrations\20190516111022_AmendIdentity.cs" />
+    <Compile Remove="Data\Migrations\20190516111022_AmendIdentity.Designer.cs" />
+    <Compile Remove="Data\Migrations\20190516120753_AmendIdentity.cs" />
+    <Compile Remove="Data\Migrations\20190516120753_AmendIdentity.Designer.cs" />
+  </ItemGroup>
+
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />

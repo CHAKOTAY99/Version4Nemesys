@@ -47,8 +47,6 @@ namespace Version4Nemesys
                 config.SignIn.RequireConfirmedEmail = true;
                 config.SignIn.RequireConfirmedPhoneNumber = false;
             })
-
-            .AddEntityFrameworkStores<ApplicationDbContext>()
             .AddRoles<IdentityRole>()
             .AddRoleManager<RoleManager<IdentityRole>>()
             .AddDefaultUI(UIFramework.Bootstrap4)
