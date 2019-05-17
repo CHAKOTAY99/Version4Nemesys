@@ -22,6 +22,5 @@ namespace Version4Nemesys.Data
         public DbSet<HazardModel> Hazard { get; set; }
         public DbSet<InvestigationModel> Investigations { get; set; }
         public DbSet<ReportModel> Reports { get; set; }
-        public DbSet<PhotoModel> Photos { get; set; }
     }
 }

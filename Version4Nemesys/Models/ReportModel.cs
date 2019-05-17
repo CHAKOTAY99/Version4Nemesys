@@ -13,18 +13,24 @@ namespace Version4Nemesys.Models
         [Required]
         [Key]
         public int ReportID { get; set; }
+
         [Required]
         public string ReportName { get; set; }
+
         [Required]
         public DateTime? EventDate { get; set; }
+
         [Required]
         public DateTime? ReportDate { get; set; }
+
         //[Required]
         //public int HazardID { get; set; }
         //[ForeignKey("HazardID")]
         //public HazardModel RelatedHazard { get; set; }
+
         [Required]
         public string EventLocation { get; set; }
+
         [Required]
         public string EventDescription { get; set; }
 
@@ -37,8 +43,15 @@ namespace Version4Nemesys.Models
 
         [Required]
         public StatesTest StatesInTest { get; set; }
+
         [Required]
         public HazardsTest HazardsInTest { get; set; }
         // public RegisterModel RegisterModel { get; set; }
+
+        [Required]
+        public string PhotoName { get; set; }
+
+        [Required]
+        public string PhotoPath { get; set; }
     }
 }
