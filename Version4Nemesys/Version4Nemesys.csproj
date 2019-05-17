@@ -20,4 +20,9 @@
     <PackageReference Include="Sendgrid" Version="9.11.0" />
   </ItemGroup>
 
+
+  <ItemGroup>
+    <Folder Include="wwwroot\UploadedImages\" />
+  </ItemGroup>
+
 </Project>

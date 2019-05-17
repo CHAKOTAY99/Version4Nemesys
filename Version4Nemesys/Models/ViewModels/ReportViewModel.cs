@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc.Rendering;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -32,5 +33,9 @@ namespace Version4Nemesys.Models.ViewModels
         //public int HazardID { get; set; }
         //[Required]
         //public EnumStates StatesInTest { get; set; }
+        [Required]
+        public IFormFile Photo { get; set; }
+
+        public string PhotoLocation { get; set; }
     }
 }

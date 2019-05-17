@@ -31,6 +31,7 @@ namespace Version4Nemesys.Repositories
             //newReport.HazardEnum = ReportVM.HazardEnum;
             newReport.HazardsInTest = ReportVM.HazardsInTest;
             newReport.StatesInTest = StatesTest.Open;
+            newReport.PhotoPath = ReportVM.PhotoLocation;
             _context.Reports.Add(newReport);
             _context.SaveChanges();
         }

@@ -48,10 +48,6 @@ namespace Version4Nemesys.Models
         public HazardsTest HazardsInTest { get; set; }
         // public RegisterModel RegisterModel { get; set; }
 
-        [Required]
-        public string PhotoName { get; set; }
-
-        [Required]
         public string PhotoPath { get; set; }
     }
 }

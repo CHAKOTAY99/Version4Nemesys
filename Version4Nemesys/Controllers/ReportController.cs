@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -15,10 +17,12 @@ namespace Version4Nemesys.Controllers
     public class ReportController : Controller
     {
         private readonly IReportRepository _repository;
+        private readonly IHostingEnvironment _hostingEnvironment;
 
-        public ReportController(IReportRepository repository)
+        public ReportController(IReportRepository repository, IHostingEnvironment hostingEnvironment)
         {
             _repository = repository;
+            _hostingEnvironment = hostingEnvironment;
         }
 
         public IActionResult Create()
@@ -28,7 +32,16 @@ namespace Version4Nemesys.Controllers
 
         // Adding a new Report
         public IActionResult AddReport(ReportViewModel ReportVM)
-        {
+        {            
+            string uniqueFileName = null;
+            if(ReportVM.Photo != null)
+            {
+                string uploadFolder = Path.Combine(_hostingEnvironment.WebRootPath, "UploadedImages");
+                uniqueFileName = Guid.NewGuid().ToString() + "_" + ReportVM.Photo.FileName;
+                string filePath = Path.Combine(uploadFolder, uniqueFileName);
+                ReportVM.Photo.CopyTo(new FileStream(filePath, FileMode.Create));
+                ReportVM.PhotoLocation = uniqueFileName;
+            }
             _repository.AddReport(ReportVM);
             return RedirectToAction("Index");
         }
