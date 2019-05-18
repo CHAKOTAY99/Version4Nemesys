@@ -5,18 +5,13 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Version4Nemesys.Models
+namespace Version4Nemesys.ViewModels
 {
-    public class VoteModel
+    public class VoteViewModel
     {
-        [Key]
         [Required]
         public int ReportID { get; set; }
-        [ForeignKey("ReportID")]
-        public ReportModel RelatedReport { get; set; }
         [Required]
         public bool Vote { get; set; }
-        [Required]
-        public int TotalVotes { get; set; }
     }
 }

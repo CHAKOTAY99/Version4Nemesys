@@ -23,7 +23,12 @@
             <th>
                 Description of event
             </th>
-            <th></th>
+            <th>
+                Updoot
+            </th>
+            <th>
+                Actions
+            </th>
         </tr>
     </thead>
     <tbody>
@@ -43,6 +48,9 @@
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.EventDescription)
+                    </td>
+                    <td>
+                        Place updoot button here
                     </td>
                     <td>
                         <a asp-controller="Report" asp-action="Details" asp-route-id="@item.ReportID">Details</a>

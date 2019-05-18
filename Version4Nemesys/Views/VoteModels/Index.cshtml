@@ -1,0 +1,47 @@
+﻿@model IEnumerable<Version4Nemesys.Models.VoteModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.RelatedReport)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Vote)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalVotes)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RelatedReport.EventDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Vote)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalVotes)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ReportID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ReportID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ReportID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
