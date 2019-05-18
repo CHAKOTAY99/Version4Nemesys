@@ -20,9 +20,11 @@ namespace Version4Nemesys.Repositories
 
         public void AddVote(VoteViewModel VoteVM, int ReportChosen)
         {
+            var item = VoteReport(ReportChosen);
             VoteModel newVote = new VoteModel();
             VoteVM.ReportID = ReportChosen;
             VoteVM.Vote = true;
+            VoteVM.RelatedReport = item;
             _context.Votes.Add(newVote);
             _context.SaveChanges();
         }

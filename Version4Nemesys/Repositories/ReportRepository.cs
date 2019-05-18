@@ -37,8 +37,8 @@ namespace Version4Nemesys.Repositories
 
 
             newVote.Vote = true;
-            newVote.TotalVotes = newVote.TotalVotes + 1;
             newVote.RelatedReport = newReport;
+            newVote.ReportID = newReport.ReportID;
 
             _context.Reports.Add(newReport);
             _context.Votes.Add(newVote);

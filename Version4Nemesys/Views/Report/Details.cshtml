@@ -1,4 +1,5 @@
 ﻿@model Version4Nemesys.Models.ViewModels.ReportViewModel
+@using System.Linq
 
 @{
     ViewData["Title"] = "Details";
@@ -35,12 +36,15 @@
         <dd class="col-sm-10">
             @Html.DisplayFor(ReportModel => ReportModel.Report.EventDescription)
         </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(ReportModel => ReportModel.Report.PhotoPath)
-        </dt>
-        <dd class="col-sm-10">
-            <img id="DetailsImage" src="@imgPath" height="450px;" width="450px" asp-append-version="true"/>
-        </dd>
+        @if (Model.PhotoLocation != null)
+        {
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(ReportModel => ReportModel.Report.PhotoPath)
+            </dt>
+            <dd class="col-sm-10">
+                <img id="DetailsImage" src="@imgPath" height="450px;" width="450px" asp-append-version="true"/>
+            </dd>
+        }
     </dl>
 </div>
 <div>
