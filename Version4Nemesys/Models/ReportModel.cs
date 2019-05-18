@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Identity;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -8,18 +9,25 @@ using static Version4Nemesys.Models.Enums.Status;
 
 namespace Version4Nemesys.Models
 {
-    public class ReportModel
+    public class ReportModel : IdentityUser
     {
-        [Required]
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ReportID { get; set; }
+
+        public string UserID { get; set; }
+        [ForeignKey("Id")]
+        public IdentityUser RelatedUser { get; set; }
+
+        
+        
         [Required]
         public string ReportName { get; set; }
         [Required]
         public DateTime? EventDate { get; set; }
         [Required]
         public DateTime? ReportDate { get; set; }
-        [Required]
+        // [Required]
         public int HazardID { get; set; }
         [ForeignKey("HazardID")]
         public HazardModel RelatedHazard { get; set; }
@@ -30,7 +38,7 @@ namespace Version4Nemesys.Models
         public int PhotoID { get; set; }
         [ForeignKey("PhotoID")]
         public PhotoModel RelatedPhoto { get; set; }
-        [Required]
+        // [Required]
         public Estates States { get; set; }
         // public RegisterModel RegisterModel { get; set; }
     }

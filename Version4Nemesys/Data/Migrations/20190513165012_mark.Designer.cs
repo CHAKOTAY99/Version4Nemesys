@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Version4Nemesys.Data;
 
 namespace Version4Nemesys.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190513165012_mark")]
+    partial class mark
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -73,9 +75,6 @@ namespace Version4Nemesys.Data.Migrations
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken();
 
-                    b.Property<string>("Discriminator")
-                        .IsRequired();
-
                     b.Property<string>("Email")
                         .HasMaxLength(256);
 
@@ -115,8 +114,6 @@ namespace Version4Nemesys.Data.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers");
-
-                    b.HasDiscriminator<string>("Discriminator").HasValue("IdentityUser");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
@@ -264,8 +261,6 @@ namespace Version4Nemesys.Data.Migrations
 
                     b.Property<int>("HazardID");
 
-                    b.Property<string>("Id");
-
                     b.Property<int>("PhotoID");
 
                     b.Property<DateTime?>("ReportDate")
@@ -276,30 +271,13 @@ namespace Version4Nemesys.Data.Migrations
 
                     b.Property<int>("States");
 
-                    b.Property<string>("UserID");
-
                     b.HasKey("ReportID");
 
                     b.HasIndex("HazardID");
 
-                    b.HasIndex("Id");
-
                     b.HasIndex("PhotoID");
 
                     b.ToTable("Reports");
-                });
-
-            modelBuilder.Entity("Version4Nemesys.Models.User", b =>
-                {
-                    b.HasBaseType("Microsoft.AspNetCore.Identity.IdentityUser");
-
-                    b.Property<DateTime?>("BirthDate");
-
-                    b.Property<string>("HomeTown");
-
-                    b.Property<string>("Street");
-
-                    b.HasDiscriminator().HasValue("User");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -369,10 +347,6 @@ namespace Version4Nemesys.Data.Migrations
                         .WithMany()
                         .HasForeignKey("HazardID")
                         .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "RelatedUser")
-                        .WithMany()
-                        .HasForeignKey("Id");
 
                     b.HasOne("Version4Nemesys.Models.PhotoModel", "RelatedPhoto")
                         .WithMany()

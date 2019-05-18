@@ -21,6 +21,7 @@ namespace Version4Nemesys.Repositories
         public void AddReport(ReportViewModel ReportVM)
         {
             ReportModel newReport = new ReportModel();
+            newReport.UserID = ReportVM.UserID;
             newReport.ReportName = ReportVM.ReportName;
             newReport.EventDate = ReportVM.EventDate;
             newReport.ReportDate = DateTime.Now;

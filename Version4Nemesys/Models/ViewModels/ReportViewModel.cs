@@ -10,8 +10,9 @@ namespace Version4Nemesys.Models.ViewModels
     public class ReportViewModel
     {
         public ReportModel Report { get; set; }
-        [Required]
-        public int ReportID { get; set; }
+        // [Required]
+        // public int ReportID { get; set; }
+        public string UserID { get; set; }
         [Required]
         public string ReportName { get; set; }
         [Required]
