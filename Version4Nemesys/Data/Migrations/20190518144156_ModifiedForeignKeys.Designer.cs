@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Version4Nemesys.Data;
 
 namespace Version4Nemesys.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190518144156_ModifiedForeignKeys")]
+    partial class ModifiedForeignKeys
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -259,7 +261,7 @@ namespace Version4Nemesys.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("ReportID");
+                    b.Property<int?>("RelatedReportReportID");
 
                     b.Property<int>("TotalVotes");
 
@@ -267,7 +269,7 @@ namespace Version4Nemesys.Data.Migrations
 
                     b.HasKey("VoteID");
 
-                    b.HasIndex("ReportID");
+                    b.HasIndex("RelatedReportReportID");
 
                     b.ToTable("Votes");
                 });
@@ -329,8 +331,7 @@ namespace Version4Nemesys.Data.Migrations
                 {
                     b.HasOne("Version4Nemesys.Models.ReportModel", "RelatedReport")
                         .WithMany()
-                        .HasForeignKey("ReportID")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("RelatedReportReportID");
                 });
 #pragma warning restore 612, 618
         }

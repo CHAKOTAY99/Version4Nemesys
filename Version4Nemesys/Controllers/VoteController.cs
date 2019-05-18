@@ -22,9 +22,11 @@ namespace Version4Nemesys.Controllers
         }
 
         // Adding a vote under a specific report
-        public IActionResult AddVote(VoteViewModel VoteVM)
+        public IActionResult AddVote(VoteViewModel VoteVM, int ReportChosen)
         {
-            _repository.AddVote(VoteVM);
+            //var report = _repository.VoteReport(ReportChosen);
+            _repository.AddVote(VoteVM, ReportChosen);
+
             return RedirectToAction("Index");
         }
     }

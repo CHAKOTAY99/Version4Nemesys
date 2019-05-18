@@ -10,8 +10,8 @@ namespace Version4Nemesys.Models
 {
     public class ReportModel
     {
-        [Required]
         [Key]
+        [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
         public int ReportID { get; set; }
 
         [Required]

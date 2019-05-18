@@ -10,8 +10,9 @@ namespace Version4Nemesys.Interfaces
 {
     public interface IVoteRepository
     {
-        void AddVote(VoteViewModel VoteVM);
+        void AddVote(VoteViewModel VoteVM, int ReportChosen);
         IEnumerable<VoteModel> GetTotalVotes();
         IEnumerable<VoteModel> GetVotesbyReport(int id);
+        ReportModel VoteReport(int ReportID);
     }
 }

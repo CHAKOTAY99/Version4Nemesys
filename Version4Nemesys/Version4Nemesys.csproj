@@ -9,6 +9,8 @@
   <ItemGroup>
     <Compile Remove="Data\Migrations\20190518102108_ModifiedVoting.cs" />
     <Compile Remove="Data\Migrations\20190518102108_ModifiedVoting.Designer.cs" />
+    <Compile Remove="Data\Migrations\20190518162006_ForeignKeyFuckup.cs" />
+    <Compile Remove="Data\Migrations\20190518162006_ForeignKeyFuckup.Designer.cs" />
   </ItemGroup>
 
 

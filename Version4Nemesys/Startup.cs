@@ -16,6 +16,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Version4Nemesys.Services;
 using Version4Nemesys.Repositories;
+using Version4Nemesys.Interfaces;
 
 namespace Version4Nemesys
 {
@@ -59,6 +60,7 @@ namespace Version4Nemesys
             services.AddScoped<IHazardRepository, HazardRepository>();
             services.AddScoped<IReportRepository, ReportRepository>();
             services.AddScoped<IInvestigationRepository, InvestigationRepository>();
+            services.AddScoped<IVoteRepository, VoteRepository>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 

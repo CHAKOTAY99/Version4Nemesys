@@ -18,10 +18,13 @@ namespace Version4Nemesys.Repositories
             _context = context;
         }
 
-        public void AddVote(VoteViewModel VoteVM)
+        public void AddVote(VoteViewModel VoteVM, int ReportChosen)
         {
             VoteModel newVote = new VoteModel();
-
+            VoteVM.ReportID = ReportChosen;
+            VoteVM.Vote = true;
+            _context.Votes.Add(newVote);
+            _context.SaveChanges();
         }
 
         public IEnumerable<VoteModel> GetTotalVotes()
@@ -32,6 +35,10 @@ namespace Version4Nemesys.Repositories
         public IEnumerable<VoteModel> GetVotesbyReport(int id)
         {
             throw new NotImplementedException();
+        }
+        public ReportModel VoteReport(int ReportID)
+        {
+            return _context.Reports.SingleOrDefault(x => x.ReportID == ReportID);
         }
     }
 }

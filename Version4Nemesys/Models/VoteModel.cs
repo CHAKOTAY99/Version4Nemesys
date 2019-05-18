@@ -11,9 +11,14 @@ namespace Version4Nemesys.Models
     {
         [Key]
         [Required]
+        [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
+        public int VoteID { get; set; }
+
+        [Required]
         public int ReportID { get; set; }
         [ForeignKey("ReportID")]
         public ReportModel RelatedReport { get; set; }
+
         [Required]
         public bool Vote { get; set; }
         [Required]
