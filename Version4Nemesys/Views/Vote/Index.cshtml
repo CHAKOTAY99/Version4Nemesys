@@ -15,12 +15,6 @@
             <th>
                 @Html.DisplayNameFor(model => model.RelatedReport)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Voted)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TotalVotes)
-            </th>
             <th></th>
         </tr>
     </thead>
@@ -29,12 +23,6 @@
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.RelatedReport.EventDescription)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Voted)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TotalVotes)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.ReportID">Edit</a> |

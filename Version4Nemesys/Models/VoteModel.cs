@@ -18,10 +18,5 @@ namespace Version4Nemesys.Models
         public int ReportID { get; set; }
         [ForeignKey("ReportID")]
         public ReportModel RelatedReport { get; set; }
-
-        [Required]
-        public bool Voted { get; set; }
-        [Required]
-        public int TotalVotes { get; set; }
     }
 }
