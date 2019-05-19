@@ -12,6 +12,9 @@
     <thead>
         <tr>
             <th>
+                Report Name
+            </th>
+            <th>
                 Date of Event
             </th>
             <th>
@@ -38,6 +41,9 @@
             {
                 <tr>
                     <td>
+                        @Html.DisplayFor(modelItem => item.ReportName)
+                    </td>
+                    <td>
                         @Html.DisplayFor(modelItem => item.EventDate)
                     </td>
                     <td>
@@ -50,7 +56,7 @@
                         @Html.DisplayFor(modelItem => item.EventDescription)
                     </td>
                     <td>
-                        <a class="btn btn-primary" asp-controller="VotE" asp-action="AddVote" asp-route-id="@item.ReportID">updoot</a>
+                        <a class="btn btn-primary" asp-controller="VotE" asp-action="AddVote" asp-route-id="@item.ReportID" asp->updoot</a>
                     </td>
                     <td>
                         <a asp-controller="Report" asp-action="Details" asp-route-id="@item.ReportID">Details</a>
