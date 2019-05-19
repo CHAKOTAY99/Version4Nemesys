@@ -21,7 +21,7 @@ namespace Version4Nemesys.Repositories
         public void AddVote(VoteViewModel VoteVM)
         {
             VoteModel newVote = new VoteModel();
-            newVote.Voted = true;
+            newVote.RelatedReport = VoteVM.RelatedReport;
             _context.Votes.Add(newVote);
             _context.SaveChanges();
         }

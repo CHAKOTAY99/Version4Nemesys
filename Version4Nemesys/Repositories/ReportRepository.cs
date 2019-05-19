@@ -35,8 +35,6 @@ namespace Version4Nemesys.Repositories
             newReport.StatesInTest = StatesTest.Open;
             newReport.PhotoPath = ReportVM.PhotoLocation;
 
-
-            newVote.Voted = true;
             newVote.RelatedReport = newReport;
             newVote.ReportID = newReport.ReportID;
 

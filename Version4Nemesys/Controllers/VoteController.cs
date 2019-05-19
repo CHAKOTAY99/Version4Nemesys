@@ -30,14 +30,15 @@ namespace Version4Nemesys.Controllers
             return RedirectToAction("Index");
         }
 
-        [Route("Details/{id:int}")]
+        [Route("Vote/{id:int}")]
         public IActionResult MoarVote(int id)
         {
-
+            var item = _repository.VoteReport(id);
             VoteViewModel voteView = new VoteViewModel()
             {
                 ReportID = id
             };
+            voteView.RelatedReport = item;
             _repository.AddVote(voteView);
             return RedirectToAction("Index");
         }
