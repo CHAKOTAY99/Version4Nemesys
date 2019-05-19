@@ -1,4 +1,6 @@
-﻿@{
+﻿@model Version4Nemesys.ViewModels.VoteViewModel;
+
+@{
     ViewData["Title"] = "Index";
     IEnumerable<ReportModel> Reports = ViewBag.Reports;
 }
@@ -56,7 +58,11 @@
                         @Html.DisplayFor(modelItem => item.EventDescription)
                     </td>
                     <td>
-                        <a class="btn btn-primary" asp-controller="VotE" asp-action="AddVote" asp-route-id="@item.ReportID" asp->updoot</a>
+                        @Html.DisplayFor(modelItem => item.ReportID)
+                    </td>
+
+                    <td>
+                        <a class="btn btn-primary" asp-controller="VotE" asp-action="MoarVote" asp-route-id="@item.ReportID">updoot</a>
                     </td>
                     <td>
                         <a asp-controller="Report" asp-action="Details" asp-route-id="@item.ReportID">Details</a>
@@ -64,5 +70,5 @@
                 </tr>
             }
         }
-        </tbody>
+    </tbody>
 </table>

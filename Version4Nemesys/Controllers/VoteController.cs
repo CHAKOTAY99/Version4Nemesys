@@ -29,5 +29,18 @@ namespace Version4Nemesys.Controllers
 
             return RedirectToAction("Index");
         }
+
+        public IActionResult MoarVote(int ChosenONe)
+        {
+
+            VoteViewModel voteView = new VoteViewModel();
+            /*
+            {
+                ReportID = ChosenONe
+            };
+            */
+            _repository.AddVote(voteView, ChosenONe);
+            return RedirectToAction("Index");
+        }
     }
 }

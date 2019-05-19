@@ -10,11 +10,11 @@ namespace Version4Nemesys.ViewModels
 {
     public class VoteViewModel
     {
+        public VoteModel Vote { get; set; }
         [Required]
         public int ReportID { get; set; }
         [Required]
-        public bool Vote { get; set; }
-        [Required]
+        public bool Voted { get; set; }
         public ReportModel RelatedReport { get; set; }
     }
 }

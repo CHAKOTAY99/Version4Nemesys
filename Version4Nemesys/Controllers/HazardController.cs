@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Version4Nemesys.Data;
 using Version4Nemesys.Models;
-using Version4Nemesys.Models.ViewModels;
+using Version4Nemesys.ViewModels;
 using Version4Nemesys.Repositories;
 
 namespace Version4Nemesys.Controllers

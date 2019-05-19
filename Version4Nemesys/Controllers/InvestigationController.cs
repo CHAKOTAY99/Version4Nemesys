@@ -8,7 +8,8 @@ using Microsoft.EntityFrameworkCore;
 using Version4Nemesys.Data;
 using Version4Nemesys.Models;
 using Version4Nemesys.Repositories;
-using Version4Nemesys.Models.ViewModels;
+using Version4Nemesys.Interfaces;
+using Version4Nemesys.ViewModels;
 
 namespace Version4Nemesys.Controllers
 {
@@ -25,13 +26,13 @@ namespace Version4Nemesys.Controllers
         {
             return View();
         }
-
+        /*
         // Adding a new Report
         public IActionResult AddInvestigation(InvestigationViewModel InvestigationVM, int id)
         {
             _repository.AddInvestigation(InvestigationVM, id);
             return RedirectToAction("Index");
-        }
+        } */
 
         // List the Reports
         public IActionResult Index()

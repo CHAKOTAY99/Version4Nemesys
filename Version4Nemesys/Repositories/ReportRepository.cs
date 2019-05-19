@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Version4Nemesys.Data;
 using Version4Nemesys.Models.Enums;
 using Version4Nemesys.Models;
-using Version4Nemesys.Models.ViewModels;
+using Version4Nemesys.ViewModels;
 
 namespace Version4Nemesys.Repositories
 {
