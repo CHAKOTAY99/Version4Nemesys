@@ -25,25 +25,7 @@ namespace Version4Nemesys.Repositories
             _context.Votes.Add(newVote);
             _context.SaveChanges();
         }
-
-        public void AnotherVote(VoteViewModel VoteVM)
-        {
-            VoteModel newVote = new VoteModel();
-            VoteVM.Voted = true;
-            _context.Votes.Add(newVote);
-            _context.SaveChanges();
-        }
-
-        public IEnumerable<VoteModel> GetTotalVotes()
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<VoteModel> GetVotesbyReport(int id)
-        {
-            throw new NotImplementedException();
-        }
-        public ReportModel VoteReport(int ReportID)
+        public ReportModel VoteByReport(int ReportID)
         {
             return _context.Reports.SingleOrDefault(x => x.ReportID == ReportID);
         }
