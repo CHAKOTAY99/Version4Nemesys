@@ -40,7 +40,7 @@ namespace Version4Nemesys.Controllers
             };
             voteView.RelatedReport = item;
             _repository.AddVote(voteView);
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Report");
         }
     }
 }
