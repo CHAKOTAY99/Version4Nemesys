@@ -36,7 +36,7 @@ namespace Version4Nemesys.Repositories
             newReport.PhotoPath = ReportVM.PhotoLocation;
 
 
-            newVote.Vote = true;
+            newVote.Voted = true;
             newVote.RelatedReport = newReport;
             newVote.ReportID = newReport.ReportID;
 

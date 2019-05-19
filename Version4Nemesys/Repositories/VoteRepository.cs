@@ -18,11 +18,10 @@ namespace Version4Nemesys.Repositories
             _context = context;
         }
 
-        public void AddVote(VoteViewModel VoteVM, int ReportChosen)
+        public void AddVote(VoteViewModel VoteVM)
         {
             VoteModel newVote = new VoteModel();
-            VoteVM.ReportID = ReportChosen;
-            VoteVM.Voted = true;
+            newVote.Voted = true;
             _context.Votes.Add(newVote);
             _context.SaveChanges();
         }

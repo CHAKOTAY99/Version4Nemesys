@@ -20,7 +20,7 @@ namespace Version4Nemesys.Models
         public ReportModel RelatedReport { get; set; }
 
         [Required]
-        public bool Vote { get; set; }
+        public bool Voted { get; set; }
         [Required]
         public int TotalVotes { get; set; }
     }
