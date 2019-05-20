@@ -11,7 +11,7 @@ namespace Version4Nemesys.Models
     public class InvestigationModel
     {
         [Key]
-        [Required]
+        [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
         public int InvestigationID { get; set; }
 
         [Required]

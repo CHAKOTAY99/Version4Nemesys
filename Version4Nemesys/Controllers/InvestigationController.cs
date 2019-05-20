@@ -27,8 +27,21 @@ namespace Version4Nemesys.Controllers
             return View();
         }
 
-        // Creating an investigation for the specific report
-        [Route("Investigation/{id:int}")]
+        // Linking to an investigation for the specific report
+        [Route("Create/{id:int}")]
+        public IActionResult RetreiveReport(int id)
+        {
+            var item = _repository.InvestigationByReport(id);
+            InvestigationViewModel investigationView = new InvestigationViewModel()
+            {
+                ReportUsed = id
+            };
+            investigationView.RelatedReport = item;
+            //_repository.AddInvestigation(investigationView);
+            return View("Create");
+        }
+
+        // Making an investigation for the specific report
         public IActionResult AddInvestigation(int id)
         {
             var item = _repository.InvestigationByReport(id);
@@ -38,9 +51,9 @@ namespace Version4Nemesys.Controllers
             };
             investigationView.RelatedReport = item;
             _repository.AddInvestigation(investigationView);
-            return View(investigationView);
+            return View("Create");
         }
-
+        
         // List the Reports
         public IActionResult Index()
         {
