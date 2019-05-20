@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Version4Nemesys.Data;
 using Version4Nemesys.Models;
 using Version4Nemesys.ViewModels;
+using Version4Nemesys.Models.Enums;
 
 namespace Version4Nemesys.Repositories
 {
@@ -22,14 +23,20 @@ namespace Version4Nemesys.Repositories
             //throw new NotImplementedException();
             return _context.Investigations.ToList();
         }
-        public void AddInvestigation(InvestigationViewModel InvestigationVM, int id)
+        public void AddInvestigation(InvestigationViewModel InvestigationVM)
         {
             InvestigationModel newInvestigation = new InvestigationModel();
             newInvestigation.ActionDate = DateTime.Now;
-            newInvestigation.ReportUsed = id;
+            newInvestigation.RelatedReport = InvestigationVM.RelatedReport;
             newInvestigation.InvestigationDescription = InvestigationVM.InvestigationDescription;
+            newInvestigation.InvestigationsInTest = InvestigationTest.Open;
             _context.Investigations.Add(newInvestigation);
             _context.SaveChanges();
+        }
+
+        public ReportModel InvestigationByReport(int ReportID)
+        {
+            return _context.Reports.SingleOrDefault(x => x.ReportID == ReportID);
         }
     }
 }

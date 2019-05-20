@@ -21,9 +21,7 @@ namespace Version4Nemesys.ViewModels
         public ReportModel RelatedReport { get; set; }
         [Required]
         public string InvestigationDescription { get; set; }
-
-        public StatesTest StatusInTest { get; set; }
-        //[Required]
-        //public Estates States { get; set; }
+        [Required]
+        public InvestigationTest InvestigationsInTest { get; set; }
     }
 }

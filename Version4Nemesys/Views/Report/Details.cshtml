@@ -54,6 +54,6 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Index">Back to List</a>
-    <a asp-action="Index">Create an Investigation for this Report</a>
+    <a class="btn btn-primary" asp-action="Index">Back to List</a>
+    <a class="btn btn-primary" asp-controller="Investigation" asp-action="AddInvestigation" asp-route-id="@Model.ReportID">Create an Investigation for this Report</a>
 </div>

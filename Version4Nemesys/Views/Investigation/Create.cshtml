@@ -1,5 +1,5 @@
 ﻿@model Version4Nemesys.Models.InvestigationModel
-
+@using Version4Nemesys.Models.Enums
 @{
     ViewData["Title"] = "Create";
 }
@@ -10,17 +10,19 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create">
+        <form asp-action="AddInvestigation">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="ActionDate" class="control-label"></label>
-                <input asp-for="ActionDate" class="form-control" />
-                <span asp-validation-for="ActionDate" class="text-danger"></span>
-            </div>
             <div class="form-group">
                 <label asp-for="InvestigationDescription" class="control-label"></label>
                 <input asp-for="InvestigationDescription" class="form-control" />
                 <span asp-validation-for="InvestigationDescription" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InvestigationsInTest" class="control-label"></label>
+                <select asp-for="InvestigationsInTest" asp-items="Html.GetEnumSelectList<InvestigationTest>()">
+                    <option selected="selected" value="">Please select</option>
+                </select>
+                <span asp-validation-for="InvestigationsInTest" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />

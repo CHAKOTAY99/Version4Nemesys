@@ -24,10 +24,8 @@ namespace Version4Nemesys.Models
 
         [Required]
         public string InvestigationDescription { get; set; }
-        //[Required]
-        //public Estates States { get; set; }
-
+        
         [Required]
-        public StatesTest StatesInTest { get; set; }
+        public InvestigationTest InvestigationsInTest { get; set; }
     }
 }

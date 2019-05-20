@@ -25,6 +25,7 @@ namespace Version4Nemesys.Repositories
             _context.Votes.Add(newVote);
             _context.SaveChanges();
         }
+
         public ReportModel VoteByReport(int ReportID)
         {
             return _context.Reports.SingleOrDefault(x => x.ReportID == ReportID);

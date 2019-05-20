@@ -26,13 +26,20 @@ namespace Version4Nemesys.Controllers
         {
             return View();
         }
-        /*
-        // Adding a new Report
-        public IActionResult AddInvestigation(InvestigationViewModel InvestigationVM, int id)
+
+        // Creating an investigation for the specific report
+        [Route("Investigation/{id:int}")]
+        public IActionResult AddInvestigation(int id)
         {
-            _repository.AddInvestigation(InvestigationVM, id);
-            return RedirectToAction("Index");
-        } */
+            var item = _repository.InvestigationByReport(id);
+            InvestigationViewModel investigationView = new InvestigationViewModel()
+            {
+                ReportUsed = id
+            };
+            investigationView.RelatedReport = item;
+            _repository.AddInvestigation(investigationView);
+            return View(investigationView);
+        }
 
         // List the Reports
         public IActionResult Index()
@@ -40,18 +47,5 @@ namespace Version4Nemesys.Controllers
             ViewBag.Reports = _repository.GetInvestigations();
             return View();
         }
-        /*
-        // Give details of the Report
-        [Route("Details/{id:int}")]
-        public IActionResult Details(int id)
-        {
-            var report = _repository.ShowInvestigationDetails(id);
-            ReportViewModel detailModel = new ReportViewModel()
-            {
-                Report = report
-            };
-            return View(detailModel);
-        }
-        */
     }
 }
