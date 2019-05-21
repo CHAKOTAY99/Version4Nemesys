@@ -20,7 +20,6 @@ namespace Version4Nemesys.Repositories
 
         public IEnumerable<InvestigationModel> GetInvestigations()
         {
-            //throw new NotImplementedException();
             return _context.Investigations.ToList();
         }
         public void AddInvestigation(InvestigationViewModel InvestigationVM)
@@ -30,6 +29,8 @@ namespace Version4Nemesys.Repositories
             newInvestigation.RelatedReport = InvestigationVM.RelatedReport;
             newInvestigation.InvestigationDescription = InvestigationVM.InvestigationDescription;
             newInvestigation.InvestigationsInTest = InvestigationTest.Open;
+            newInvestigation.RelatedReport = InvestigationVM.RelatedReport;
+            newInvestigation.ReportUsed = InvestigationVM.ReportUsed;
             _context.Investigations.Add(newInvestigation);
             _context.SaveChanges();
         }

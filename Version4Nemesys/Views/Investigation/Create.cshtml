@@ -1,5 +1,4 @@
 ﻿@model Version4Nemesys.ViewModels.InvestigationViewModel
-@using Version4Nemesys.Models.Enums
 
 @{
     ViewData["Title"] = "Create";
@@ -13,6 +12,11 @@
     <div class="col-md-4">
         <form asp-action="AddInvestigation">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <input asp-for="InvestigationID" type="hidden" class="form-control" />
+            <input asp-for="InvestigationsInTest" type="hidden" class="form-control" />
+            <input asp-for="RelatedReport" type="hidden" class="form-control" />
+            <input asp-for="ReportUsed" type="hidden" class="form-control" />
             <div class="form-group">
                 <label asp-for="InvestigationDescription" class="control-label"></label>
                 <input asp-for="InvestigationDescription" class="form-control" />
