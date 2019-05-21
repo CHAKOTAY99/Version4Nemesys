@@ -11,6 +11,7 @@ namespace Version4Nemesys.ViewModels
 {
     public class InvestigationViewModel
     {
+        public InvestigationModel Investigation { get; set; }
         [Required]
         public int InvestigationID { get; set; }
         [Required]

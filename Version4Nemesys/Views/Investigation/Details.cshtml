@@ -1,4 +1,4 @@
-﻿@model Version4Nemesys.Models.InvestigationModel
+﻿@model Version4Nemesys.ViewModels.InvestigationViewModel
 
 @{
     ViewData["Title"] = "Details";
@@ -11,16 +11,16 @@
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ActionDate)
+            @Html.DisplayNameFor(InvestigationModel => InvestigationModel.Investigation.ActionDate)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ActionDate)
+            @Html.DisplayFor(InvestigationModel => InvestigationModel.Investigation.ActionDate)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.InvestigationDescription)
+            @Html.DisplayNameFor(InvestigationModel => InvestigationModel.Investigation.InvestigationDescription)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.InvestigationDescription)
+            @Html.DisplayFor(InvestigationModel => InvestigationModel.Investigation.InvestigationDescription)
         </dd>
     </dl>
 </div>

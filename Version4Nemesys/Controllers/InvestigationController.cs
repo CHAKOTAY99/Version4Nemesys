@@ -45,14 +45,26 @@ namespace Version4Nemesys.Controllers
         public IActionResult AddInvestigation(InvestigationViewModel InvestigationVM)
         {
             _repository.AddInvestigation(InvestigationVM);
-            return View("Create");
+            return RedirectToAction("Index");
         }
         
         // List the Reports
         public IActionResult Index()
         {
-            ViewBag.Reports = _repository.GetInvestigations();
+            ViewBag.Investigations = _repository.GetInvestigations();
             return View();
+        }
+
+        // Give details of the Report
+        [Route("InvestigationDetails/{id:int}")]
+        public IActionResult Details(int id)
+        {
+            var investigation = _repository.GetInvestigationDetails(id);
+            InvestigationViewModel detailedInvestigation = new InvestigationViewModel()
+            {
+                Investigation = investigation
+            };
+            return View(detailedInvestigation);
         }
     }
 }

@@ -39,5 +39,10 @@ namespace Version4Nemesys.Repositories
         {
             return _context.Reports.SingleOrDefault(x => x.ReportID == ReportID);
         }
+
+        public InvestigationModel GetInvestigationDetails(int InvestigtaionID)
+        {
+            return _context.Investigations.SingleOrDefault(x => x.InvestigationID == InvestigtaionID);
+        }
     }
 }
