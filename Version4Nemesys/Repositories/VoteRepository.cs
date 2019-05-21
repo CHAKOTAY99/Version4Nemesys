@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -21,9 +23,20 @@ namespace Version4Nemesys.Repositories
         public void AddVote(VoteViewModel VoteVM)
         {
             VoteModel newVote = new VoteModel();
-            newVote.RelatedReport = VoteVM.RelatedReport;
-            _context.Votes.Add(newVote);
-            _context.SaveChanges();
+
+            newVote.ReportID = VoteVM.ReportID;
+            newVote.UserId = VoteVM.UserId;
+            
+                //string voteQuery = "SELECT COUNT(*)"
+                //+ "FROM Votes"
+                //+ "WHERE ReportID = 'VoteVM.ReportID' AND UserId = 'VoteVM.UserId'";
+
+                //if (voteQuery == "0")
+                //{
+                    _context.Votes.Add(newVote);
+                    _context.SaveChanges();
+                //}
+                            
         }
 
         public ReportModel VoteByReport(int ReportID)
