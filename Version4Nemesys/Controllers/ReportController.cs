@@ -11,6 +11,8 @@ using Version4Nemesys.Data;
 using Version4Nemesys.Models;
 using Version4Nemesys.ViewModels;
 using Version4Nemesys.Repositories;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Version4Nemesys.Controllers
 {
@@ -18,11 +20,13 @@ namespace Version4Nemesys.Controllers
     {
         private readonly IReportRepository _repository;
         private readonly IHostingEnvironment _hostingEnvironment;
+        private readonly UserManager<IdentityUser> _userManager;
 
-        public ReportController(IReportRepository repository, IHostingEnvironment hostingEnvironment)
+        public ReportController(IReportRepository reportRepository, IHostingEnvironment hostingEnvironment, UserManager<IdentityUser> userManager)
         {
-            _repository = repository;
+            _repository = reportRepository;
             _hostingEnvironment = hostingEnvironment;
+            _userManager = userManager;
         }
 
         public IActionResult Create()
@@ -31,10 +35,14 @@ namespace Version4Nemesys.Controllers
         }
 
         // Adding a new Report
+        [HttpPost]
+        [Authorize]
         public IActionResult AddReport(ReportViewModel ReportVM)
         {            
             string uniqueFileName = null;
-            if(ReportVM.Photo != null)
+            var userId = _userManager.GetUserId(User);
+            ReportVM.UserId = userId;
+            if (ReportVM.Photo != null)
             {
                 string uploadFolder = Path.Combine(_hostingEnvironment.WebRootPath, "UploadedImages");
                 uniqueFileName = Guid.NewGuid().ToString() + "_" + ReportVM.Photo.FileName;
