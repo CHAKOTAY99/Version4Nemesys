@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Version4Nemesys.Data;
 
 namespace Version4Nemesys.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190521145919_mark")]
+    partial class mark
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -259,11 +261,13 @@ namespace Version4Nemesys.Data.Migrations
 
             modelBuilder.Entity("Version4Nemesys.Models.VoteModel", b =>
                 {
-                    b.Property<string>("UserId");
+                    b.Property<int>("VoteID")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("ReportID");
 
-                    b.HasKey("UserId", "ReportID");
+                    b.HasKey("VoteID");
 
                     b.HasIndex("ReportID");
 
@@ -332,14 +336,9 @@ namespace Version4Nemesys.Data.Migrations
 
             modelBuilder.Entity("Version4Nemesys.Models.VoteModel", b =>
                 {
-                    b.HasOne("Version4Nemesys.Models.ReportModel", "Report")
+                    b.HasOne("Version4Nemesys.Models.ReportModel", "RelatedReport")
                         .WithMany()
                         .HasForeignKey("ReportID")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618

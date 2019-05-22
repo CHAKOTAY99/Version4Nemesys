@@ -23,5 +23,12 @@ namespace Version4Nemesys.Data
         public DbSet<InvestigationModel> Investigations { get; set; }
         public DbSet<ReportModel> Reports { get; set; }
         public DbSet<VoteModel> Votes { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<VoteModel>()
+                .HasKey(o => new { o.UserId, o.ReportID });
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }

@@ -21,7 +21,7 @@ namespace Version4Nemesys.Repositories
         public void AddReport(ReportViewModel ReportVM)
         {
             ReportModel newReport = new ReportModel();
-            VoteModel newVote = new VoteModel();
+            // VoteModel newVote = new VoteModel();
 
             newReport.ReportName = ReportVM.ReportName;
             newReport.EventDate = ReportVM.EventDate;
@@ -34,12 +34,14 @@ namespace Version4Nemesys.Repositories
             newReport.HazardsInTest = ReportVM.HazardsInTest;
             newReport.StatesInTest = StatesTest.Open;
             newReport.PhotoPath = ReportVM.PhotoLocation;
+            newReport.UserId = ReportVM.UserId;
 
-            newVote.RelatedReport = newReport;
-            newVote.ReportID = newReport.ReportID;
+            // newVote.RelatedReport = newReport;
+            // newVote.ReportID = newReport.ReportID;
+            // newVote.UserId = newReport.UserId;
 
             _context.Reports.Add(newReport);
-            _context.Votes.Add(newVote);
+            // _context.Votes.Add(newVote);
             _context.SaveChanges();
         }
 

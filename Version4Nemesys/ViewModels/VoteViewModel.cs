@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Identity;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -11,11 +12,13 @@ namespace Version4Nemesys.ViewModels
     public class VoteViewModel
     {
         public VoteModel Vote { get; set; }
-        [Required]
-        public int VoteID { get; set; }
+        
         [Required]
         public int ReportID { get; set; }
-        public bool Voted { get; set; }
-        public ReportModel RelatedReport { get; set; }
+        public virtual ReportModel RelatedReport { get; set; }
+
+        [Required]
+        public string UserId { get; set; }
+        public virtual IdentityUser User { get; set; }
     }
 }

@@ -16,6 +16,8 @@ namespace Version4Nemesys.ViewModels
         [Required]
         public int ReportID { get; set; }
         [Required]
+        public string UserId { get; set; }
+        [Required]
         public string ReportName { get; set; }
         [Required]
         public DateTime? EventDate { get; set; }

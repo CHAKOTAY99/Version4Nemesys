@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Identity;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -11,12 +12,14 @@ namespace Version4Nemesys.Models
     {
         [Key]
         [Required]
-        [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
-        public int VoteID { get; set; }
-
-        [Required]
-        public int ReportID { get; set; }
+        public virtual ReportModel RelatedReport { get; set; }
         [ForeignKey("ReportID")]
-        public ReportModel RelatedReport { get; set; }
+        public int ReportID { get; set; }
+        
+        [Key]
+        [Required]
+        public virtual IdentityUser User { get; set; }
+        [ForeignKey("UserId")]
+        public string UserId { get; set; }
     }
 }
