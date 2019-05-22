@@ -41,14 +41,14 @@ namespace Version4Nemesys.Controllers
             return View("Create", investigationView);
         }
 
-        // Making an investigation for the specific report
+        // Add the investigation
         public IActionResult AddInvestigation(InvestigationViewModel InvestigationVM)
         {
             _repository.AddInvestigation(InvestigationVM);
             return RedirectToAction("Index");
         }
         
-        // List the Reports
+        // List the Investigations
         public IActionResult Index()
         {
             ViewBag.Investigations = _repository.GetInvestigations();
@@ -65,6 +65,27 @@ namespace Version4Nemesys.Controllers
                 Investigation = investigation
             };
             return View(detailedInvestigation);
+        }
+
+        // Switching to the Edit page of an investigation
+        [Route("EditInvestigation/{id:int}")]
+        public IActionResult Edit(int id)
+        {
+            var investigation = _repository.GetInvestigationDetails(id);
+            InvestigationViewModel detailedInvestigation = new InvestigationViewModel()
+            {
+                Investigation = investigation,
+                InvestigationID = investigation.InvestigationID,
+                InvestigationsInTest = investigation.InvestigationsInTest
+            };
+            return View("Edit", detailedInvestigation);
+        }
+
+        // Updating the edited investigaiton
+        public IActionResult EditInvestigation(InvestigationViewModel InvestigationVM)
+        {
+            _repository.EditInvestigation(InvestigationVM);
+            return RedirectToAction("Index");
         }
     }
 }

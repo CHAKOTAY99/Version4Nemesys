@@ -11,6 +11,7 @@ namespace Version4Nemesys.Repositories
     {
         IEnumerable<InvestigationModel> GetInvestigations();
         void AddInvestigation(InvestigationViewModel InvestigationVM);
+        void EditInvestigation(InvestigationViewModel InvestigationVM);
         ReportModel InvestigationByReport(int ReportID);
         InvestigationModel GetInvestigationDetails(int InvestigationID);
     }

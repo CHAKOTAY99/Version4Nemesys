@@ -29,7 +29,7 @@
                             @Html.DisplayFor(modelItem => item.InvestigationDescription)
                         </td>
                         <td>
-                            <a class="btn btn-primary" asp-action="Edit" asp-route-id="@item.InvestigationID">Edit</a>
+                            <a class="btn btn-primary" asp-controller="Investigation" asp-action="Edit" asp-route-id="@item.InvestigationID">Edit</a>
                             <a class="btn btn-primary" asp-controller="Investigation" asp-action="Details" asp-route-id="@item.InvestigationID">Details</a>
                         </td>
                     </tr>

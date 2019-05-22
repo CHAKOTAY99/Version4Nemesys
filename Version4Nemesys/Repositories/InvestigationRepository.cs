@@ -35,6 +35,21 @@ namespace Version4Nemesys.Repositories
             _context.SaveChanges();
         }
 
+        public void EditInvestigation(InvestigationViewModel InvestigationVM)
+        {
+            InvestigationModel ToChange = GetInvestigationDetails(InvestigationVM.InvestigationID);
+            //InvestigationModel ToChange = _context.Investigations.SingleOrDefault(x => x.InvestigationID == InvestigationVM.InvestigationID);
+            //InvestigationModel ToChange = new InvestigationModel();
+            ToChange.ActionDate = DateTime.Now;
+            //ToChange.RelatedReport = InvestigationVM.RelatedReport;
+            ToChange.InvestigationDescription = InvestigationVM.InvestigationDescription;
+            ToChange.InvestigationsInTest = InvestigationVM.InvestigationsInTest;
+            //ToChange.RelatedReport = InvestigationVM.RelatedReport;
+            //ToChange.ReportUsed = InvestigationVM.ReportUsed;
+            _context.Investigations.Update(ToChange);
+            _context.SaveChanges();
+        }
+
         public ReportModel InvestigationByReport(int ReportID)
         {
             return _context.Reports.SingleOrDefault(x => x.ReportID == ReportID);
