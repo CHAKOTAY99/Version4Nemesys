@@ -214,9 +214,13 @@ namespace Version4Nemesys.Data.Migrations
 
                     b.Property<int>("ReportUsed");
 
+                    b.Property<string>("UserId");
+
                     b.HasKey("InvestigationID");
 
                     b.HasIndex("ReportUsed");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Investigations");
                 });
@@ -321,6 +325,10 @@ namespace Version4Nemesys.Data.Migrations
                         .WithMany()
                         .HasForeignKey("ReportUsed")
                         .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("Version4Nemesys.Models.ReportModel", b =>
@@ -332,7 +340,7 @@ namespace Version4Nemesys.Data.Migrations
 
             modelBuilder.Entity("Version4Nemesys.Models.VoteModel", b =>
                 {
-                    b.HasOne("Version4Nemesys.Models.ReportModel", "Report")
+                    b.HasOne("Version4Nemesys.Models.ReportModel", "RelatedReport")
                         .WithMany()
                         .HasForeignKey("ReportID")
                         .OnDelete(DeleteBehavior.Cascade);

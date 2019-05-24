@@ -11,6 +11,8 @@
     <Compile Remove="Data\Migrations\20190518102108_ModifiedVoting.Designer.cs" />
     <Compile Remove="Data\Migrations\20190518162006_ForeignKeyFuckup.cs" />
     <Compile Remove="Data\Migrations\20190518162006_ForeignKeyFuckup.Designer.cs" />
+    <Compile Remove="Data\Migrations\20190521192742_vote2.cs" />
+    <Compile Remove="Data\Migrations\20190521192742_vote2.Designer.cs" />
   </ItemGroup>
 
 

@@ -10,8 +10,8 @@ using Version4Nemesys.Data;
 namespace Version4Nemesys.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20190521192742_vote2")]
-    partial class vote2
+    [Migration("20190524083755_IdentitytoInvestigations")]
+    partial class IdentitytoInvestigations
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -216,9 +216,13 @@ namespace Version4Nemesys.Data.Migrations
 
                     b.Property<int>("ReportUsed");
 
+                    b.Property<string>("UserId");
+
                     b.HasKey("InvestigationID");
 
                     b.HasIndex("ReportUsed");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Investigations");
                 });
@@ -323,6 +327,10 @@ namespace Version4Nemesys.Data.Migrations
                         .WithMany()
                         .HasForeignKey("ReportUsed")
                         .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("Version4Nemesys.Models.ReportModel", b =>
@@ -334,7 +342,7 @@ namespace Version4Nemesys.Data.Migrations
 
             modelBuilder.Entity("Version4Nemesys.Models.VoteModel", b =>
                 {
-                    b.HasOne("Version4Nemesys.Models.ReportModel", "Report")
+                    b.HasOne("Version4Nemesys.Models.ReportModel", "RelatedReport")
                         .WithMany()
                         .HasForeignKey("ReportID")
                         .OnDelete(DeleteBehavior.Cascade);

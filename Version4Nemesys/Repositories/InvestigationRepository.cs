@@ -31,6 +31,7 @@ namespace Version4Nemesys.Repositories
             newInvestigation.InvestigationsInTest = InvestigationTest.Open;
             newInvestigation.RelatedReport = InvestigationVM.RelatedReport;
             newInvestigation.ReportUsed = InvestigationVM.ReportUsed;
+            newInvestigation.UserId = InvestigationVM.UserId;
             _context.Investigations.Add(newInvestigation);
             _context.SaveChanges();
         }

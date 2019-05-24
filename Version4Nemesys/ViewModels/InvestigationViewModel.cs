@@ -15,6 +15,8 @@ namespace Version4Nemesys.ViewModels
         [Required]
         public int InvestigationID { get; set; }
         [Required]
+        public string UserId { get; set; }
+        [Required]
         public DateTime? ActionDate { get; set; }
         [Required]
         public int ReportUsed { get; set; }

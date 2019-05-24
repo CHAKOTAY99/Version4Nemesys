@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Identity;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -13,6 +14,10 @@ namespace Version4Nemesys.Models
         [Key]
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
         public int InvestigationID { get; set; }
+
+        public virtual IdentityUser User { get; set; }
+        [ForeignKey("UserId")]
+        public string UserId { get; set; }
 
         [Required]
         public DateTime? ActionDate { get; set; }

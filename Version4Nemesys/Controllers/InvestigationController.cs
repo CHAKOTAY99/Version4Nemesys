@@ -10,6 +10,7 @@ using Version4Nemesys.Models;
 using Version4Nemesys.Repositories;
 using Version4Nemesys.Interfaces;
 using Version4Nemesys.ViewModels;
+using Microsoft.AspNetCore.Identity;
 
 namespace Version4Nemesys.Controllers
 {
@@ -17,9 +18,13 @@ namespace Version4Nemesys.Controllers
     {
         private readonly IInvestigationRepository _repository;
 
-        public InvestigationController(IInvestigationRepository repository)
+        private readonly UserManager<IdentityUser> _userManager;
+
+        public InvestigationController(IInvestigationRepository repository, UserManager<IdentityUser> userManager)
         {
             _repository = repository;
+
+            _userManager = userManager;
         }
 
         public IActionResult Create()
@@ -44,6 +49,8 @@ namespace Version4Nemesys.Controllers
         // Add the investigation
         public IActionResult AddInvestigation(InvestigationViewModel InvestigationVM)
         {
+            var userId = _userManager.GetUserId(User);
+            InvestigationVM.UserId = userId;
             _repository.AddInvestigation(InvestigationVM);
             return RedirectToAction("Index");
         }
