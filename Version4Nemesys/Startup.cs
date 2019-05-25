@@ -65,7 +65,7 @@ namespace Version4Nemesys
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IServiceProvider ServiceProvider)
         {
             if (env.IsDevelopment())
             {
@@ -84,13 +84,30 @@ namespace Version4Nemesys
             app.UseCookiePolicy();
 
             app.UseAuthentication();
-
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+            CreateRoles(ServiceProvider).Wait();
+        }
+
+        
+        private async Task CreateRoles(IServiceProvider ServiceProvider)
+        {
+            var RoleManager = ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+            string[] roleNames = { "Reporter", "Investigator" };
+            IdentityResult roleResult;
+
+            foreach (var roleName in roleNames)
+            {
+                var roleExist = await RoleManager.RoleExistsAsync(roleName);
+                if (!roleExist)
+                {
+                    roleResult = await RoleManager.CreateAsync(new IdentityRole(roleName));
+                }
+            }
         }
     }
 }
