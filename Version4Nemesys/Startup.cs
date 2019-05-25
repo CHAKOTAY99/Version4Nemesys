@@ -57,7 +57,6 @@ namespace Version4Nemesys
             // Adding services to DB context
             services.AddTransient<IEmailSender, EmailSender>();
             services.Configure<AuthMessageSenderOptions>(Configuration);
-            services.AddScoped<IHazardRepository, HazardRepository>();
             services.AddScoped<IReportRepository, ReportRepository>();
             services.AddScoped<IInvestigationRepository, InvestigationRepository>();
             services.AddScoped<IVoteRepository, VoteRepository>();
