@@ -29,6 +29,7 @@ namespace Version4Nemesys.Controllers
             _userManager = userManager;
         }
 
+        [Authorize(Roles = "Reporter")]
         public IActionResult Create()
         {
             return View();
@@ -36,7 +37,7 @@ namespace Version4Nemesys.Controllers
 
         // Adding a new Report
         [HttpPost]
-        [Authorize]
+        [Authorize(Roles = "Reporter")]
         public IActionResult AddReport(ReportViewModel ReportVM)
         {            
             string uniqueFileName = null;

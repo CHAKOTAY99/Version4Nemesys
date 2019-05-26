@@ -11,6 +11,7 @@ using Version4Nemesys.Repositories;
 using Version4Nemesys.Interfaces;
 using Version4Nemesys.ViewModels;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Version4Nemesys.Controllers
 {
@@ -33,6 +34,7 @@ namespace Version4Nemesys.Controllers
         }
 
         // Linking to an investigation for the specific report
+        [Authorize(Roles = "Investigator")]
         [Route("Create/{id:int}")]
         public IActionResult RetreiveReport(int id)
         {
@@ -47,6 +49,7 @@ namespace Version4Nemesys.Controllers
         }
 
         // Add the investigation
+        [Authorize(Roles = "Investigator")]
         public IActionResult AddInvestigation(InvestigationViewModel InvestigationVM)
         {
             var userId = _userManager.GetUserId(User);
@@ -54,8 +57,9 @@ namespace Version4Nemesys.Controllers
             _repository.AddInvestigation(InvestigationVM);
             return RedirectToAction("Index");
         }
-        
+
         // List the Investigations
+        [Authorize(Roles = "Investigator")]
         public IActionResult Index()
         {
             ViewBag.Investigations = _repository.GetInvestigations();
@@ -63,6 +67,7 @@ namespace Version4Nemesys.Controllers
         }
 
         // Give details of the Report
+        [Authorize(Roles = "Investigator")]
         [Route("InvestigationDetails/{id:int}")]
         public IActionResult Details(int id)
         {
@@ -75,6 +80,7 @@ namespace Version4Nemesys.Controllers
         }
 
         // Switching to the Edit page of an investigation
+        [Authorize(Roles = "Investigator")]
         [Route("EditInvestigation/{id:int}")]
         public IActionResult Edit(int id)
         {
@@ -89,6 +95,7 @@ namespace Version4Nemesys.Controllers
         }
 
         // Updating the edited investigaiton
+        [Authorize(Roles = "Investigator")]
         public IActionResult EditInvestigation(InvestigationViewModel InvestigationVM)
         {
             _repository.EditInvestigation(InvestigationVM);
