@@ -12,7 +12,10 @@ namespace Version4Nemesys.ViewModels
     public class VoteViewModel
     {
         public VoteModel Vote { get; set; }
-        
+
+        [Required]
+        public int VoteID { get; set; }
+
         [Required]
         public int ReportID { get; set; }
         public virtual ReportModel RelatedReport { get; set; }
