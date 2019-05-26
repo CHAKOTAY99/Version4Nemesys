@@ -27,15 +27,20 @@ namespace Version4Nemesys.Controllers
         {
             var userId = _userManager.GetUserId(User);
             IdentityUser user = await _userManager.FindByIdAsync(userId);
-            //IdentityUser user = await UserManager.Find
-            if(AccountVM.JobsList == 0)
+            var check1 = await _userManager.IsInRoleAsync(user, "Investigator");
+            var check2 = await _userManager.IsInRoleAsync(user, "Reporter");
+            if (check1 == false && check2 == false)
             {
-                await _userManager.AddToRoleAsync(user, "Investigator");
-            } else
-            {
-                await _userManager.AddToRoleAsync(user, "Reporter");
+                if (AccountVM.JobsList == 0)
+                {
+                    await _userManager.AddToRoleAsync(user, "Investigator");
+                }
+                else
+                {
+                    await _userManager.AddToRoleAsync(user, "Reporter");
+                }
             }
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Home");
         }
         /*
         // POST: Account/Create

@@ -4,14 +4,14 @@
     ViewData["Title"] = "RoleChange";
 }
 
-<h1>RoleChange</h1>
+<h1>Choose a role</h1>
 </hr>
 <div class="row">
     <div class="col-md-4">
         <form asp-controller="Account" asp-action="RoleChangeAsync">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="JobsList" class="control-label"></label>
+                <label asp-for="JobsList" class="control-label">Which role:</label>
                 <select asp-for="JobsList" asp-items="Html.GetEnumSelectList<Jobs>()">
                     <option selected="selected" value="">Please select</option>
                 </select>
