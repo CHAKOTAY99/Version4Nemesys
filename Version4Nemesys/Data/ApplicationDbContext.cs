@@ -22,6 +22,7 @@ namespace Version4Nemesys.Data
         public DbSet<InvestigationModel> Investigations { get; set; }
         public DbSet<ReportModel> Reports { get; set; }
         public DbSet<VoteModel> Votes { get; set; }
+        public DbSet<UserModel> UserCounter { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

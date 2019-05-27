@@ -6,42 +6,49 @@ using Version4Nemesys.Data;
 using Version4Nemesys.Models.Enums;
 using Version4Nemesys.Models;
 using Version4Nemesys.ViewModels;
+using Microsoft.AspNetCore.Identity;
 
 namespace Version4Nemesys.Repositories
 {
     public class ReportRepository : IReportRepository
     {
         private readonly ApplicationDbContext _context;
+        private readonly UserManager<IdentityUser> _userManager;
 
-        public ReportRepository(ApplicationDbContext context)
+        public ReportRepository(ApplicationDbContext context, UserManager<IdentityUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         public void AddReport(ReportViewModel ReportVM)
         {
             ReportModel newReport = new ReportModel();
-            // VoteModel newVote = new VoteModel();
 
             newReport.ReportName = ReportVM.ReportName;
             newReport.EventDate = ReportVM.EventDate;
             newReport.ReportDate = DateTime.Now;
             newReport.EventLocation = ReportVM.EventLocation;
             newReport.EventDescription = ReportVM.EventDescription;
-            //newReport.States = Status.Estates.OPEN;
-            //newReport.HazardID = ReportVM.HazardID;
-            //newReport.HazardEnum = ReportVM.HazardEnum;
             newReport.HazardsInTest = ReportVM.HazardsInTest;
             newReport.StatesInTest = StatesTest.Open;
             newReport.PhotoPath = ReportVM.PhotoLocation;
             newReport.UserId = ReportVM.UserId;
-
-            // newVote.RelatedReport = newReport;
-            // newVote.ReportID = newReport.ReportID;
-            // newVote.UserId = newReport.UserId;
+            
+            // First check if one exists
+            if (UserFind(ReportVM.UserId) == null) {
+                UserModel newUser = new UserModel();
+                newUser.Counter = newUser.Counter + 1;
+                newUser.UserId = ReportVM.UserId;
+                _context.UserCounter.Add(newUser);
+            } else
+            {
+                UserModel ToChange = UserFind(ReportVM.UserId);
+                ToChange.Counter = ToChange.Counter + 1;
+                _context.UserCounter.Update(ToChange);
+            }
 
             _context.Reports.Add(newReport);
-            // _context.Votes.Add(newVote);
             _context.SaveChanges();
         }
 
@@ -53,6 +60,11 @@ namespace Version4Nemesys.Repositories
         public ReportModel ShowReportDetails(int ReportID)
         {
             return _context.Reports.SingleOrDefault(x => x.ReportID == ReportID);
+        }
+
+        public UserModel UserFind(string UserId)
+        {
+            return _context.UserCounter.SingleOrDefault(x => x.UserId.Equals(UserId));
         }
     }
 }
