@@ -41,6 +41,8 @@ namespace Version4Nemesys.Repositories
                 UserModel newUser = new UserModel();
                 newUser.Counter = newUser.Counter + 1;
                 newUser.UserId = ReportVM.UserId;
+                newUser.User = GetUser(ReportVM.UserId);
+                newUser.Email = newUser.User.Email;
                 _context.UserCounter.Add(newUser);
             } else
             {

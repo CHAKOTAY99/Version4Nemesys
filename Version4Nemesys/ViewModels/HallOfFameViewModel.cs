@@ -11,8 +11,14 @@ namespace Version4Nemesys.ViewModels
 {
     public class HallOfFameViewModel
     {
+        public string UserId { get; set; }
+
+        public string Email { get; set; }
 
         [Required]
-        public int Co { get; set; }
+        public IdentityUser User { get; set; }
+
+        [Required]
+        public int Counter { get; set; }
     }
 }

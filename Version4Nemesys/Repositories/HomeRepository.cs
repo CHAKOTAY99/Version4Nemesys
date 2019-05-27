@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Identity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -19,6 +20,11 @@ namespace Version4Nemesys.Repositories
         public IEnumerable<UserModel> GetLeaderboard()
         {
             return _context.UserCounter.ToList();
+        }
+
+        public IdentityUser GetUser(string userID)
+        {
+            return _context.Users.SingleOrDefault(x => x.Id.Equals(userID));
         }
     }
 }

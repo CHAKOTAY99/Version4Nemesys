@@ -18,6 +18,8 @@ namespace Version4Nemesys.Models
         public virtual IdentityUser User { get; set; }
         [ForeignKey("UserId")]
         public string UserId { get; set; }
+        [ForeignKey("Email")]
+        public string Email { get; set; }
 
         [Required]
         public int Counter { get; set; }

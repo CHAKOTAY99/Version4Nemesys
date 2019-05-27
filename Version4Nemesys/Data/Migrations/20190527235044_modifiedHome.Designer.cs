@@ -10,8 +10,8 @@ using Version4Nemesys.Data;
 namespace Version4Nemesys.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20190527183255_Clean_Migration")]
-    partial class Clean_Migration
+    [Migration("20190527235044_modifiedHome")]
+    partial class modifiedHome
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -256,6 +256,8 @@ namespace Version4Nemesys.Data.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("Counter");
+
+                    b.Property<string>("Email");
 
                     b.Property<string>("UserId")
                         .IsRequired();
