@@ -30,8 +30,8 @@
                 <span asp-validation-for="EventDate" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="EventLocation" class="control-label"></label>
-                <input asp-for="EventLocation" class="form-control" />
+                <!--<label asp-for="EventLocation" class="control-label"></label>-->
+                <input asp-for="EventLocation" class="form-control custom-control-input" id="coord" value="loc" />
                 <span asp-validation-for="EventLocation" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -46,14 +46,71 @@
                     <label class="custom-file-label">Choose File...</label>
                 </div>
             </div>
+            <style>
+
+                /* Always set the map height explicitly to define the size of the div
+                * element that contains the map. */
+                #map_canvas {
+                    height: 450px;
+                    width: 550px;
+                    margin-bottom: 50px;
+                }
+            </style>
+            <div class="panel panel-info">
+                <div class="panel-heading">Event Location Map</div>
+                <div class="panel-body">
+                    <div id="map_canvas"></div>
+                </div>
+            </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
             @section Scripts {
+
+                <script>
+                    var map;
+                    var myMarker;
+                    var coord = document.getElementById('coord');
+                    function initMap() {
+                        map = new google.maps.Map(document.getElementById('map_canvas'), {
+                            zoom: 17,
+                            center: new google.maps.LatLng(35.9022662, 14.4834103),
+                            mapTypeId: google.maps.MapTypeId.ROADMAP
+                        });
+
+                        function placeMarkerAndPanTo(latLng, map) {
+                            if (myMarker) {
+                                myMarker.setPosition(latLng);
+                            } else {
+                                myMarker = new google.maps.Marker({
+                                    position: latLng,
+                                    map: map
+                                    //position: new google.maps.LatLng(47.651968, 9.478485),
+                                });
+                            }
+                        }
+
+                        google.maps.event.addListener(map, 'click', function (event) {
+                            placeMarkerAndPanTo(event.latLng, map);
+                            //var lat = document.getElementById('event_lat').innerHTML = event.latLng.lat().toFixed(4);
+                            //var lng = document.getElementById('event_lng').innerHTML = event.latLng.lng().toFixed(4);
+                            var loc = document.getElementById('coord').innerText = event.latLng.lat().toFixed(4) + ', ' + event.latLng.lng().toFixed(4);
+                            coord.value = loc;
+                        });
+                        //map.setCenter(myMarker.position);
+                        //myMarker.setMap(map);
+                        //map.panTo(latLng);
+                    }
+                </script>
+
+                <script async defer
+                        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBoCtiQZSsiWOZ4x8O1AeobArGnKUvKbYo&libraries=drawing&callback=initMap">
+                </script>
+                <script src="https://maps.googleapis.com/maps/api/js"></script>
                 <script>
                     $('.custom-file-input').on("change", function () {
-                            var fileName = $(this).val().split("\\").pop();
-                            $(this).next('.custom-file-label').html(fileName);
+                        var fileName = $(this).val().split("\\").pop();
+                        $(this).next('.custom-file-label').html(fileName);
                     });
                 </script>
             }
