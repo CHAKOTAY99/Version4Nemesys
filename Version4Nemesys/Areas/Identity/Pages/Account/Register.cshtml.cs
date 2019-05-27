@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
+using Version4Nemesys.Models.Enums;
 
 namespace Version4Nemesys.Areas.Identity.Pages.Account
 {
@@ -54,6 +55,10 @@ namespace Version4Nemesys.Areas.Identity.Pages.Account
             [Display(Name = "Confirm password")]
             [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
             public string ConfirmPassword { get; set; }
+
+            [Required]
+            [Display(Name = "Job type")]
+            public Jobs JobsList { get; set; }
         }
 
         public void OnGet(string returnUrl = null)
@@ -68,8 +73,25 @@ namespace Version4Nemesys.Areas.Identity.Pages.Account
             {
                 var user = new IdentityUser { UserName = Input.Email, Email = Input.Email };
                 var result = await _userManager.CreateAsync(user, Input.Password);
+
                 if (result.Succeeded)
                 {
+                    /*  Section for role */
+                    var check1 = await _userManager.IsInRoleAsync(user, "Investigator");
+                    var check2 = await _userManager.IsInRoleAsync(user, "Reporter");
+                    if (check1 == false && check2 == false)
+                    {
+                        if (Input.JobsList == 0)
+                        {
+                            await _userManager.AddToRoleAsync(user, "Investigator");
+                        }
+                        else
+                        {
+                            await _userManager.AddToRoleAsync(user, "Reporter");
+                        }
+                    }
+                    /* End role section */
+
                     _logger.LogInformation("User created a new account with password.");
 
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
