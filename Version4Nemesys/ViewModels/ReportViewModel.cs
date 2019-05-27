@@ -7,6 +7,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Version4Nemesys.Models.Enums;
 using Version4Nemesys.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace Version4Nemesys.ViewModels
 {
@@ -17,6 +18,8 @@ namespace Version4Nemesys.ViewModels
         public int ReportID { get; set; }
         [Required]
         public string UserId { get; set; }
+        [Required]
+        public IdentityUser User { get; set; }
         [Required]
         public string ReportName { get; set; }
         [Required]

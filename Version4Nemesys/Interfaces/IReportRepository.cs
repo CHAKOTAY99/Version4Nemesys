@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Identity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -12,5 +13,7 @@ namespace Version4Nemesys.Repositories
         IEnumerable<ReportModel> GetReports();
         void AddReport(ReportViewModel ReportVM);
         ReportModel ShowReportDetails(int ReportID);
+        UserModel UserFind(string UserId);
+        IdentityUser GetUser(string userID);
     }
 }

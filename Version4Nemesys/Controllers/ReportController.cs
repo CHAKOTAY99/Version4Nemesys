@@ -72,6 +72,7 @@ namespace Version4Nemesys.Controllers
                 ReportID = report.ReportID,
                 UserId = report.UserId,
                 ReportName = report.ReportName,
+                User = _repository.GetUser(report.UserId),
                 EventDate = report.EventDate,
                 ReportDate = report.ReportDate,
                 EventLocation = report.EventLocation,
