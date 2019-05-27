@@ -30,15 +30,8 @@ namespace Version4Nemesys.ViewModels
         [Required]
         public HazardsTest HazardsInTest { get; set; }
         public StatesTest StatusInTest { get; set; }
-        //[Required]
-        //public Estates States { get; set; }
-        //[Required]
-        //public int HazardID { get; set; }
-        //[Required]
-        //public EnumStates StatesInTest { get; set; }
         [Required]
         public IFormFile Photo { get; set; }
-
-        public string PhotoLocation { get; set; }
+        public string PhotoPath { get; set; }
     }
 }

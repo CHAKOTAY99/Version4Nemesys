@@ -3,7 +3,7 @@
 
 @{
     ViewData["Title"] = "Details";
-    var imgPath = "~/UploadedImages/" + Model.Report.PhotoPath;
+    var imgPath = "~/UploadedImages/" + Model.PhotoPath;
 }
 
 <h1>Details</h1>
@@ -13,39 +13,39 @@
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(ReportModel => ReportModel.Report.ReportName)
+            @Html.DisplayNameFor(ReportModel => ReportModel.ReportName)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(ReportModel => ReportModel.Report.ReportName)
+            @Html.DisplayFor(ReportModel => ReportModel.ReportName)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(ReportModel => ReportModel.Report.EventDate)
+            @Html.DisplayNameFor(ReportModel => ReportModel.EventDate)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(ReportModel => ReportModel.Report.EventDate)
+            @Html.DisplayFor(ReportModel => ReportModel.EventDate)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(ReportModel => ReportModel.Report.ReportDate)
+            @Html.DisplayNameFor(ReportModel => ReportModel.ReportDate)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(ReportModel => ReportModel.Report.ReportDate)
+            @Html.DisplayFor(ReportModel => ReportModel.ReportDate)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(ReportModel => ReportModel.Report.EventLocation)
+            @Html.DisplayNameFor(ReportModel => ReportModel.EventLocation)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(ReportModel => ReportModel.Report.EventLocation)
+            @Html.DisplayFor(ReportModel => ReportModel.EventLocation)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(ReportModel => ReportModel.Report.EventDescription)
+            @Html.DisplayNameFor(ReportModel => ReportModel.EventDescription)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(ReportModel => ReportModel.Report.EventDescription)
+            @Html.DisplayFor(ReportModel => ReportModel.EventDescription)
         </dd>
-        @if (Model.Report.PhotoPath != null)
+        @if (Model.PhotoPath != null)
         {
             <dt class="col-sm-2">
-                @Html.DisplayNameFor(ReportModel => ReportModel.Report.PhotoPath)
+                @Html.DisplayNameFor(ReportModel => ReportModel.PhotoPath)
             </dt>
             <dd class="col-sm-10">
                 <img id="DetailsImage" src="@imgPath" height="450px;" width="450px" asp-append-version="true" />
@@ -55,5 +55,5 @@
 </div>
 <div>
     <a class="btn btn-primary" asp-action="Index">Back to List</a>
-    <a class="btn btn-primary" asp-controller="Investigation" asp-action="RetreiveReport" asp-route-id="@Model.Report.ReportID">Create an Investigation for this Report</a>
+    <a class="btn btn-primary" asp-controller="Investigation" asp-action="RetreiveReport" asp-route-id="@Model.ReportID">Create an Investigation for this Report</a>
 </div>

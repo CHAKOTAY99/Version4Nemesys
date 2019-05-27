@@ -32,7 +32,7 @@ namespace Version4Nemesys.Repositories
             newReport.EventDescription = ReportVM.EventDescription;
             newReport.HazardsInTest = ReportVM.HazardsInTest;
             newReport.StatesInTest = StatesTest.Open;
-            newReport.PhotoPath = ReportVM.PhotoLocation;
+            newReport.PhotoPath = ReportVM.PhotoPath;
             newReport.UserId = ReportVM.UserId;
             
             // First check if one exists
