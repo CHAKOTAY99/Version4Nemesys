@@ -1,6 +1,7 @@
-﻿@model Version4Nemesys.Models.VoteModel
+﻿@model Version4Nemesys.ViewModels.HallOfFameViewModel;
 @{
     ViewData["Title"] = "Leaderboard";
+    IEnumerable<UserModel> UserCounter = ViewBag.UserCounter;
 }
 <h1>Leaderboard</h1>
 <table class="table">
@@ -15,6 +16,19 @@
         </tr>
     </thead>
     <tbody>
-        
+        @if (UserCounter != null)
+        {
+            @foreach (var item in UserCounter)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UserId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Counter)
+                    </td>
+                </tr>
+            }
+        }
     </tbody>
 </table>

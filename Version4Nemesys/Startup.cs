@@ -60,6 +60,7 @@ namespace Version4Nemesys
             services.AddScoped<IReportRepository, ReportRepository>();
             services.AddScoped<IInvestigationRepository, InvestigationRepository>();
             services.AddScoped<IVoteRepository, VoteRepository>();
+            services.AddScoped<IHomeRepository, HomeRepository>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
