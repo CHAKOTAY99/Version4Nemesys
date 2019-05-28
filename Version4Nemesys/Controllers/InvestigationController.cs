@@ -74,8 +74,14 @@ namespace Version4Nemesys.Controllers
             var investigation = _repository.GetInvestigationDetails(id);
             InvestigationViewModel detailedInvestigation = new InvestigationViewModel()
             {
-                Investigation = investigation
-            };
+                InvestigationID = investigation.InvestigationID,
+                UserId = investigation.UserId,
+                User = _repository.GetUser(investigation.UserId),
+                ActionDate = investigation.ActionDate,
+                ReportUsed = investigation.ReportUsed,
+                InvestigationDescription = investigation.InvestigationDescription,
+                InvestigationsInTest = investigation.InvestigationsInTest
+        };
             return View(detailedInvestigation);
         }
 

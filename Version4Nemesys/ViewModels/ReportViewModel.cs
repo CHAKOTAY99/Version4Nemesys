@@ -7,6 +7,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Version4Nemesys.Models.Enums;
 using Version4Nemesys.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace Version4Nemesys.ViewModels
 {
@@ -17,6 +18,8 @@ namespace Version4Nemesys.ViewModels
         public int ReportID { get; set; }
         [Required]
         public string UserId { get; set; }
+        [Required]
+        public IdentityUser User { get; set; }
         [Required]
         public string ReportName { get; set; }
         [Required]
@@ -30,15 +33,8 @@ namespace Version4Nemesys.ViewModels
         [Required]
         public HazardsTest HazardsInTest { get; set; }
         public StatesTest StatusInTest { get; set; }
-        //[Required]
-        //public Estates States { get; set; }
-        //[Required]
-        //public int HazardID { get; set; }
-        //[Required]
-        //public EnumStates StatesInTest { get; set; }
         [Required]
         public IFormFile Photo { get; set; }
-
-        public string PhotoLocation { get; set; }
+        public string PhotoPath { get; set; }
     }
 }

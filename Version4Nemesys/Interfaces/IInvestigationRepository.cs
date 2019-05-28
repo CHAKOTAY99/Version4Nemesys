@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Identity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -14,5 +15,6 @@ namespace Version4Nemesys.Repositories
         void EditInvestigation(InvestigationViewModel InvestigationVM);
         ReportModel InvestigationByReport(int ReportID);
         InvestigationModel GetInvestigationDetails(int InvestigationID);
+        IdentityUser GetUser(string userID);
     }
 }

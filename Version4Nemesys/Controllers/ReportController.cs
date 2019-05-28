@@ -49,7 +49,7 @@ namespace Version4Nemesys.Controllers
                 uniqueFileName = Guid.NewGuid().ToString() + "_" + ReportVM.Photo.FileName;
                 string filePath = Path.Combine(uploadFolder, uniqueFileName);
                 ReportVM.Photo.CopyTo(new FileStream(filePath, FileMode.Create));
-                ReportVM.PhotoLocation = uniqueFileName;
+                ReportVM.PhotoPath = uniqueFileName;
             }
             _repository.AddReport(ReportVM);
             return RedirectToAction("Index");
@@ -69,7 +69,17 @@ namespace Version4Nemesys.Controllers
             var report = _repository.ShowReportDetails(id);
             ReportViewModel detailModel = new ReportViewModel()
             {
-                Report = report
+                ReportID = report.ReportID,
+                UserId = report.UserId,
+                ReportName = report.ReportName,
+                User = _repository.GetUser(report.UserId),
+                EventDate = report.EventDate,
+                ReportDate = report.ReportDate,
+                EventLocation = report.EventLocation,
+                EventDescription = report.EventDescription,
+                HazardsInTest = report.HazardsInTest,
+                StatusInTest = report.StatesInTest,
+                PhotoPath = report.PhotoPath
             };
             return View(detailModel);
         }

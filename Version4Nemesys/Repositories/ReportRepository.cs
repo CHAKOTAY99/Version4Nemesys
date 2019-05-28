@@ -32,14 +32,17 @@ namespace Version4Nemesys.Repositories
             newReport.EventDescription = ReportVM.EventDescription;
             newReport.HazardsInTest = ReportVM.HazardsInTest;
             newReport.StatesInTest = StatesTest.Open;
-            newReport.PhotoPath = ReportVM.PhotoLocation;
+            newReport.PhotoPath = ReportVM.PhotoPath;
             newReport.UserId = ReportVM.UserId;
+            newReport.User = GetUser(ReportVM.UserId);
             
             // First check if one exists
             if (UserFind(ReportVM.UserId) == null) {
                 UserModel newUser = new UserModel();
                 newUser.Counter = newUser.Counter + 1;
                 newUser.UserId = ReportVM.UserId;
+                newUser.User = GetUser(ReportVM.UserId);
+                newUser.Email = newUser.User.Email;
                 _context.UserCounter.Add(newUser);
             } else
             {
@@ -65,6 +68,11 @@ namespace Version4Nemesys.Repositories
         public UserModel UserFind(string UserId)
         {
             return _context.UserCounter.SingleOrDefault(x => x.UserId.Equals(UserId));
+        }
+
+        public IdentityUser GetUser(string userID)
+        {
+            return _context.Users.SingleOrDefault(x => x.Id.Equals(userID));
         }
     }
 }

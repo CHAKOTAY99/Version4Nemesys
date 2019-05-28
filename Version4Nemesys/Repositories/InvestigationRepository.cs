@@ -6,6 +6,7 @@ using Version4Nemesys.Data;
 using Version4Nemesys.Models;
 using Version4Nemesys.ViewModels;
 using Version4Nemesys.Models.Enums;
+using Microsoft.AspNetCore.Identity;
 
 namespace Version4Nemesys.Repositories
 {
@@ -32,6 +33,8 @@ namespace Version4Nemesys.Repositories
             newInvestigation.RelatedReport = InvestigationVM.RelatedReport;
             newInvestigation.ReportUsed = InvestigationVM.ReportUsed;
             newInvestigation.UserId = InvestigationVM.UserId;
+            newInvestigation.User = GetUser(InvestigationVM.UserId);
+
             _context.Investigations.Add(newInvestigation);
             _context.SaveChanges();
         }
@@ -59,6 +62,11 @@ namespace Version4Nemesys.Repositories
         public InvestigationModel GetInvestigationDetails(int InvestigtaionID)
         {
             return _context.Investigations.SingleOrDefault(x => x.InvestigationID == InvestigtaionID);
+        }
+
+        public IdentityUser GetUser(string userID)
+        {
+            return _context.Users.SingleOrDefault(x => x.Id.Equals(userID));
         }
     }
 }

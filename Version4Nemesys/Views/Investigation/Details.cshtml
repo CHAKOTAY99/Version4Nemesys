@@ -11,26 +11,32 @@
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(InvestigationModel => InvestigationModel.Investigation.ActionDate)
+            @Html.DisplayNameFor(InvestigationModel => InvestigationModel.ActionDate)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(InvestigationModel => InvestigationModel.Investigation.ActionDate)
+            @Html.DisplayFor(InvestigationModel => InvestigationModel.ActionDate)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(InvestigationModel => InvestigationModel.Investigation.InvestigationDescription)
+            @Html.DisplayNameFor(InvestigationModel => InvestigationModel.InvestigationDescription)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(InvestigationModel => InvestigationModel.Investigation.InvestigationDescription)
+            @Html.DisplayFor(InvestigationModel => InvestigationModel.InvestigationDescription)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(InvestigationModel => InvestigationModel.Investigation.InvestigationsInTest)
+            @Html.DisplayNameFor(InvestigationModel => InvestigationModel.InvestigationsInTest)
         </dt>
         <dd class="col-sm-10">
-            @Html.DisplayFor(InvestigationModel => InvestigationModel.Investigation.InvestigationsInTest)
+            @Html.DisplayFor(InvestigationModel => InvestigationModel.InvestigationsInTest)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(InvestigationModel => InvestigationModel.User.Email)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(InvestigationModel => InvestigationModel.User.Email)
         </dd>
     </dl>
 </div>
 <div>
-    <a class="btn btn-primary" asp-controller="Investigation" asp-action="Edit" asp-route-id="@Model.Investigation.InvestigationID">Edit</a>
+    <a class="btn btn-primary" asp-controller="Investigation" asp-action="Edit" asp-route-id="@Model.InvestigationID">Edit</a>
     <a class="btn btn-primary" asp-action="Index">Back to List</a>
 </div>

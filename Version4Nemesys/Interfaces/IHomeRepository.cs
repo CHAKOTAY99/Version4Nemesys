@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Identity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -9,5 +10,6 @@ namespace Version4Nemesys.Interfaces
     public interface IHomeRepository
     {
         IEnumerable<UserModel> GetLeaderboard();
+        IdentityUser GetUser(string userID);
     }
 }

@@ -255,6 +255,8 @@ namespace Version4Nemesys.Data.Migrations
 
                     b.Property<int>("Counter");
 
+                    b.Property<string>("Email");
+
                     b.Property<string>("UserId")
                         .IsRequired();
 
