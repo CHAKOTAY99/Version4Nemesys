@@ -59,7 +59,6 @@ namespace Version4Nemesys.Controllers
         }
 
         // List the Investigations
-        [Authorize(Roles = "Investigator")]
         public IActionResult Index()
         {
             ViewBag.Investigations = _repository.GetInvestigations();
@@ -67,7 +66,6 @@ namespace Version4Nemesys.Controllers
         }
 
         // Give details of the Report
-        [Authorize(Roles = "Investigator")]
         [Route("InvestigationDetails/{id:int}")]
         public IActionResult Details(int id)
         {
