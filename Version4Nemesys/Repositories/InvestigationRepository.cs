@@ -25,18 +25,22 @@ namespace Version4Nemesys.Repositories
         }
         public void AddInvestigation(InvestigationViewModel InvestigationVM)
         {
-            InvestigationModel newInvestigation = new InvestigationModel();
-            newInvestigation.ActionDate = DateTime.Now;
-            newInvestigation.RelatedReport = InvestigationVM.RelatedReport;
-            newInvestigation.InvestigationDescription = InvestigationVM.InvestigationDescription;
-            newInvestigation.InvestigationsInTest = InvestigationTest.Open;
-            newInvestigation.RelatedReport = InvestigationVM.RelatedReport;
-            newInvestigation.ReportUsed = InvestigationVM.ReportUsed;
-            newInvestigation.UserId = InvestigationVM.UserId;
-            newInvestigation.User = GetUser(InvestigationVM.UserId);
+            var investigation = InvestigationByReport(InvestigationVM.ReportUsed);
+            if(investigation == null)
+            {
+                InvestigationModel newInvestigation = new InvestigationModel();
+                newInvestigation.ActionDate = DateTime.Now;
+                newInvestigation.RelatedReport = InvestigationVM.RelatedReport;
+                newInvestigation.InvestigationDescription = InvestigationVM.InvestigationDescription;
+                newInvestigation.InvestigationsInTest = InvestigationTest.Open;
+                newInvestigation.RelatedReport = InvestigationVM.RelatedReport;
+                newInvestigation.ReportUsed = InvestigationVM.ReportUsed;
+                newInvestigation.UserId = InvestigationVM.UserId;
+                newInvestigation.User = GetUser(InvestigationVM.UserId);
 
-            _context.Investigations.Add(newInvestigation);
-            _context.SaveChanges();
+                _context.Investigations.Add(newInvestigation);
+                _context.SaveChanges();
+            }
         }
 
         public void EditInvestigation(InvestigationViewModel InvestigationVM)
