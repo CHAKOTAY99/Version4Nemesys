@@ -12,5 +12,6 @@ namespace Version4Nemesys.Interfaces
     {
         void AddVote(VoteViewModel VoteVM);
         ReportModel VoteByReport(int ReportID);
+        void RemoveVote(VoteViewModel VoteVM);
     }
 }

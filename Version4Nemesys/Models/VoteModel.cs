@@ -18,7 +18,7 @@ namespace Version4Nemesys.Models
         public virtual ReportModel RelatedReport { get; set; }
         [ForeignKey("ReportID")]
         public int ReportID { get; set; }
-        
+
         [Required]
         public virtual IdentityUser User { get; set; }
         [ForeignKey("UserId")]

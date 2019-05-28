@@ -29,16 +29,32 @@ namespace Version4Nemesys.Controllers
         [Route("Vote/{id:int}")]
         public IActionResult AddVote(int id)
         {
+            
             var userId = _userManager.GetUserId(User);
             var item = _repository.VoteByReport(id);
             VoteViewModel voteView = new VoteViewModel()
             {
                 ReportID = id,
                 UserId = userId
-        };
+            };
             voteView.RelatedReport = item;
             _repository.AddVote(voteView);
             return RedirectToAction("Index", "Report");
         }
+
+        public IActionResult RemoveVote(int id)
+        {
+            var userId = _userManager.GetUserId(User);
+            var item = _repository.VoteByReport(id);
+            VoteViewModel voteView = new VoteViewModel()
+            {
+                ReportID = id,
+                UserId = userId
+            };
+            voteView.RelatedReport = item;
+            _repository.RemoveVote(voteView);
+            return RedirectToAction("Index", "Report");
+        }
+
     }
 }

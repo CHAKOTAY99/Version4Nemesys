@@ -41,29 +41,40 @@
         {
             @foreach (var item in Reports)
             {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ReportName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.EventDate)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.ReportDate)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.EventLocation)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.EventDescription)
-                    </td>
-                    <td>
-                        <a class="btn btn-primary" asp-controller="VotE" asp-action="AddVote" asp-route-id="@item.ReportID">upvote</a>
-                    </td>
-                    <td>
-                        <a class="btn btn-primary" asp-controller="Report" asp-action="Details" asp-route-id="@item.ReportID">Details</a>
-                    </td>
-                </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReportName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EventDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReportDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EventLocation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EventDescription)
+            </td>
+            <td>
+                <a class="btn btn-primary" asp-controller="VotE" asp-action="AddVote" asp-route-id="@item.ReportID">UpVote</a>
+                @if(ViewBag.Message != null)
+                {
+                    <script type="text/javascript">
+                        window.onload = function () {
+                            alert("@ViewBag.Message");
+                        };
+                    </script>
+                }
+            </td>
+            <td>
+                <a class="btn btn-primary" asp-controller="VotE" asp-action="RemoveVote" asp-route-id="@item.ReportID">DownVote</a>
+            </td>
+            <td>
+                <a class="btn btn-primary" asp-controller="Report" asp-action="Details" asp-route-id="@item.ReportID">Details</a>
+            </td>
+        </tr>
             }
         }
     </tbody>
